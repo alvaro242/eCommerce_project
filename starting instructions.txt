@@ -1,0 +1,2 @@
+npm start in frontend
+php artisan serve in backend

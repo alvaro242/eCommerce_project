@@ -9,10 +9,18 @@ import "../assets/css/home.css";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 
+import axios from "axios";
+
 export class homePage extends Component {
   componentDidMount() {
     window.scroll(0, 0);
   }
+
+  componentWillUnmount() {
+    axios.post("http://127.0.0.1:8000/api/visitor");
+    //it will only exec once
+  }
+
   render() {
     return (
       <Fragment>

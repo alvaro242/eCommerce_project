@@ -20,7 +20,7 @@ class FeaturedProducts extends Component {
                 />
                 <Card.Body>
                   <p className="product-name-on-card">Firefox </p>
-                  <p className="product-price-on-card">Price: 2EUR</p>
+                  <p className="product-price-on-card">Price: £2</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -32,7 +32,7 @@ class FeaturedProducts extends Component {
                 />
                 <Card.Body>
                   <p className="product-name-on-card">Chrome </p>
-                  <p className="product-price-on-card">Price: 1EUR</p>
+                  <p className="product-price-on-card">Price: £1</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -44,7 +44,7 @@ class FeaturedProducts extends Component {
                 />
                 <Card.Body>
                   <p className="product-name-on-card">Firefox </p>
-                  <p className="product-price-on-card">Price: 2EUR</p>
+                  <p className="product-price-on-card">Price: £2</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -56,7 +56,7 @@ class FeaturedProducts extends Component {
                 />
                 <Card.Body>
                   <p className="product-name-on-card">Chrome </p>
-                  <p className="product-price-on-card">Price: 1EUR</p>
+                  <p className="product-price-on-card">Price: £1</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -68,7 +68,7 @@ class FeaturedProducts extends Component {
                 />
                 <Card.Body>
                   <p className="product-name-on-card">Firefox </p>
-                  <p className="product-price-on-card">Price: 2EUR</p>
+                  <p className="product-price-on-card">Price: £2</p>
                 </Card.Body>
               </Card>
             </Col>
@@ -80,7 +80,7 @@ class FeaturedProducts extends Component {
                 />
                 <Card.Body>
                   <p className="product-name-on-card">Chrome </p>
-                  <p className="product-price-on-card">Price: 1EUR</p>
+                  <p className="product-price-on-card">Price: £1</p>
                 </Card.Body>
               </Card>
             </Col>

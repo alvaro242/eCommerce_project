@@ -1,7 +1,34 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import axios from "axios";
+import LoadingSkeleton from "../other/skeleton";
 
 export class Contact extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      address: "",
+      email: "",
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ address: LoadingSkeleton() });
+    this.setState({ email: LoadingSkeleton() });
+
+    axios
+      .get("http://127.0.0.1:8000/api/webinfo")
+      .then((response) =>
+        this.setState({
+          address: response.data[0].address,
+          email: response.data[0].email,
+        })
+      )
+
+      .catch((error) => console.log(error));
+  }
+
   render() {
     return (
       <Fragment>
@@ -79,8 +106,9 @@ export class Contact extends Component {
                           <br></br>
                           <br></br>
                           <p className="section-title-contact">
-                            11 Clarence St, Salford, M7 1BU Email:
-                            contact@alvarodominguezmora.com
+                            {this.state.address}
+                            <p></p>
+                            {this.state.email}
                           </p>
                         </Col>
                       </Row>

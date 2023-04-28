@@ -32,9 +32,9 @@ class Basket extends Component {
                         className="form-control"
                         type="number"
                       />
-                      hola hola
+
                       <Button className="btn btn-block  mt-3  site-btn">
-                        <i className="fa fa-trash"></i>
+                        <i className="fa fa-trash ">Remove</i>
                       </Button>
                     </Col>
                   </Row>

@@ -5,6 +5,7 @@ import LoginPage from "../pages/loginPage";
 import ContactPage from "../pages/contactPage";
 import ProductPage from "../pages/productPage";
 import BasketPage from "../pages/basketPage";
+import AboutPage from "../pages/aboutPage";
 
 export class AppRoute extends Component {
   render() {
@@ -16,6 +17,7 @@ export class AppRoute extends Component {
           <Route exact path="/contact" component={ContactPage}></Route>
           <Route exact path="/productPage" component={ProductPage}></Route>
           <Route exact path="/basketPage" component={BasketPage}></Route>
+          <Route exact path="/about" component={AboutPage}></Route>
         </Switch>
       </Fragment>
     );

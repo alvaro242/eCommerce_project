@@ -1,2 +1,7 @@
 npm start in frontend
 php artisan serve in backend
+php -S 127.0.0.1:8000 -t public/ in backend
+
+composer dump-autoload
+php artisan clear-compiled
+composer clear-cache

@@ -29,7 +29,7 @@ export class ItemsList extends Component {
                   <Card className="image-box card w-100">
                     <img className="center " src={p1} />
                     <Card.Body>
-                      <p className="product-price-on-card">Price: 2EUR</p>
+                      <p className="product-price-on-card">Price: £2</p>
                     </Card.Body>
                   </Card>
                 </Link>
@@ -44,7 +44,7 @@ export class ItemsList extends Component {
                   <Card className="image-box card w-100">
                     <img className="center" src={p2} />
                     <Card.Body>
-                      <p className="product-price-on-card">Price: 2EUR</p>
+                      <p className="product-price-on-card">Price: £2</p>
                     </Card.Body>
                   </Card>
                 </Link>
@@ -59,7 +59,7 @@ export class ItemsList extends Component {
                   <Card className="image-box card w-100">
                     <img className="center" src={p3} />
                     <Card.Body>
-                      <p className="product-price-on-card">Price: 2EUR</p>
+                      <p className="product-price-on-card">Price: £2</p>
                     </Card.Body>
                   </Card>
                 </Link>
@@ -74,7 +74,7 @@ export class ItemsList extends Component {
                   <Card className="image-box card w-100">
                     <img className="center " src={p4} />
                     <Card.Body>
-                      <p className="product-price-on-card">Price: 2EUR</p>
+                      <p className="product-price-on-card">Price: £2</p>
                     </Card.Body>
                   </Card>
                 </Link>
@@ -89,7 +89,7 @@ export class ItemsList extends Component {
                   <Card className="image-box card w-100">
                     <img className="center" src={p5} />
                     <Card.Body>
-                      <p className="product-price-on-card">Price: 2EUR</p>
+                      <p className="product-price-on-card">Price: £2</p>
                     </Card.Body>
                   </Card>
                 </Link>
@@ -104,7 +104,7 @@ export class ItemsList extends Component {
                   <Card className="image-box card w-100">
                     <img className="center " src={p6} />
                     <Card.Body>
-                      <p className="product-price-on-card">Price: 2EUR</p>
+                      <p className="product-price-on-card">Price: £2</p>
                     </Card.Body>
                   </Card>
                 </Link>

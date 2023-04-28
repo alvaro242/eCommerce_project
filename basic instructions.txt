@@ -1,0 +1,26 @@
+
+Create model and linked migration file:
+
+1 - php artisan make:model nameModel -m 
+
+It will create a migration called nameModels
+
+2 - Edit de model which extends the model class. valid use: protected $storedData = [] inside of the class
+
+3 - Edit the migration file with whatever it will be executed in the database. 
+
+4- php artisan migrate
+
+-------------------------------------------------------------------------------------------------------
+Create controller:
+
+php artisan make: controller folder/nameController
+
+Create route:
+Route::(get/post) ('newurl', [controlerName::class, 'functionName'])
+
+
+
+
+
+

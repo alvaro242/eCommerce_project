@@ -8,7 +8,7 @@ use App\Models\visitor;
 
 class VisitorController extends Controller
 {
-    public function getVisitorDetails(){
+    public function writeVisitorDetails(){
         
         $ip_address = $_SERVER['REMOTE_ADDR'];
        date_default_timezone_set("Europe/London");

@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\WebInfoController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubcategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +25,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 */
 
 
-Route::post('/visitor', [VisitorController::class, 'getVisitorDetails']);
+Route::post('/visitor', [VisitorController::class, 'writeVisitorDetails']);
 
 Route::get('/webinfo', [WebInfoController::class, 'getAllInfo']);
+
+Route::get('/categories', [CategoryController::class, 'getAllCategories']);
+
+Route::get('/subcategories', [SubcategoryController::class, 'getAllSubcategories']);

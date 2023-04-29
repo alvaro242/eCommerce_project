@@ -105,11 +105,10 @@ export class Contact extends Component {
                         >
                           <br></br>
                           <br></br>
-                          <p className="section-title-contact">
-                            {this.state.address}
-                            <p></p>
-                            {this.state.email}
-                          </p>
+                          <div className="section-title-contact">
+                            {this.state.address}{" "}
+                          </div>
+                          <div>{this.state.email}</div>
                         </Col>
                       </Row>
                     </Col>

@@ -9,7 +9,7 @@ class visitor extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $guarded = [
         'ip_address',
         'visit_time',
         'visit_date',

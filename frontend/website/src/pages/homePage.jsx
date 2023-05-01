@@ -8,16 +8,29 @@ import SimpleSlider from "../components/home/simpleSlider";
 import "../assets/css/home.css";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
-
-import axios from "axios";
+import { postVisitorDetails } from "../components/api/api";
+import { getAllCategories } from "../components/api/api";
 
 export class homePage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      subcategories: [],
+    };
+  }
+
   componentDidMount() {
     window.scroll(0, 0);
+    getAllCategories()
+      .then((response) => {
+        this.setState({ subcategories: response.data[0].subcategory });
+      })
+      .catch((error) => console.log(error));
   }
 
   componentWillUnmount() {
-    axios.post("http://127.0.0.1:8000/api/visitor");
+    postVisitorDetails();
     //it will only exec once
   }
 
@@ -26,7 +39,7 @@ export class homePage extends Component {
       <Fragment>
         <Container>
           <NavMenu />
-          <Categories />
+          <Categories subcategories={this.state.subcategories} />
           <SimpleSlider />
           <FeaturedProducts />
 

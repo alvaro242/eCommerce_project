@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Spinner } from "react-bootstrap";
-
-import axios from "axios";
 import LoadingSkeleton from "./skeleton";
 import ReactHtmlParser from "react-html-parser";
+import { getWebInfo } from "../api/api";
 
 class About extends Component {
   constructor(props) {
@@ -17,8 +16,7 @@ class About extends Component {
   componentDidMount() {
     this.setState({ about: LoadingSkeleton() });
 
-    axios
-      .get("http://127.0.0.1:8000/api/webinfo")
+    getWebInfo()
       .then((response) => this.htmlParser(response.data[0].about))
       .catch((error) => console.log(error));
   }

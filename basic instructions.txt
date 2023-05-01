@@ -5,7 +5,7 @@ Create model and linked migration file:
 
 It will create a migration called nameModels
 
-2 - Edit de model which extends the model class. valid use: protected $storedData = [] inside of the class
+2 - Edit de model which extends the model class. valid use: protected $guarded = [] inside of the class
 
 3 - Edit the migration file with whatever it will be executed in the database. 
 
@@ -14,7 +14,7 @@ It will create a migration called nameModels
 -------------------------------------------------------------------------------------------------------
 Create controller:
 
-php artisan make: controller folder/nameController
+php artisan make:controller folder/nameController
 
 Create route:
 Route::(get/post) ('newurl', [controlerName::class, 'functionName'])

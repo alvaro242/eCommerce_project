@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import axios from "axios";
+import { getWebInfo } from "../api/api";
 import LoadingSkeleton from "../other/skeleton";
 
 export class Contact extends Component {
@@ -17,8 +17,7 @@ export class Contact extends Component {
     this.setState({ address: LoadingSkeleton() });
     this.setState({ email: LoadingSkeleton() });
 
-    axios
-      .get("http://127.0.0.1:8000/api/webinfo")
+    getWebInfo()
       .then((response) =>
         this.setState({
           address: response.data[0].address,

@@ -9,108 +9,90 @@ import p5 from "../../assets/images/products/noBackground/India.png";
 import p6 from "../../assets/images/products/noBackground/Indonesia.png";
 import p7 from "../../assets/images/products/noBackground/Peru.png";
 import p8 from "../../assets/images/products/noBackground/Vietnam.png";
+import { getProductsByFeatureNew, getServerURL } from "../api/api";
 
 export class ItemsList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      newarrivals: [],
+    };
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  async getData() {
+    await getProductsByFeatureNew()
+      .then((response) => {
+        this.setState({ newarrivals: response.data });
+      })
+      .catch((error) => console.log(error));
+  }
+
   render() {
+    const newArrivals = this.state.newarrivals;
+    const renderNewArrivals = newArrivals.map((newArrivalItem, index) => {
+      if (newArrivals.offer_price !== "") {
+        return (
+          <Col className="p-2" key={index} xl={3} lg={4} sm={4} xs={6} md={4}>
+            <Card>
+              <Link
+                to="/product"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <Card className="image-box card w-100">
+                  <img
+                    className="center "
+                    src={getServerURL() + newArrivalItem.image_nobackground}
+                  />
+                  <Card.Body>
+                    <p>{newArrivalItem.name} </p>
+                    <p>
+                      <strike>£{newArrivalItem.price} </strike> £
+                      {newArrivalItem.offer_price}
+                    </p>
+                  </Card.Body>
+                </Card>
+              </Link>
+            </Card>
+          </Col>
+        );
+      } else {
+        return (
+          <Col className="p-2" key={index} xl={3} lg={4} sm={4} xs={6} md={4}>
+            <Card>
+              <Link
+                to="/Product"
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                <Card className="image-box card w-100">
+                  <img
+                    className="center "
+                    src={getServerURL() + newArrivalItem.image_nobackground}
+                  />
+                  <Card.Body>
+                    <p>{newArrivalItem.name} </p>
+                    <p>£{newArrivalItem.offer_price}</p>
+                  </Card.Body>
+                </Card>
+              </Link>
+            </Card>
+          </Col>
+        );
+      }
+    });
+
     return (
       <Fragment>
         <Container className="text-center" fluid={true}>
           <div className="section-title text-center mb-55">
-            <h2>Items list</h2>
-            <p>Products list section</p>
+            <h2>New arrivals</h2>
+            <p>Have a look!</p>
           </div>
-          <Row>
-            <Col className="p-2" key={1} xl={3} lg={4} sm={4} xs={6} md={4}>
-              <Card>
-                <Link
-                  to="/ProductPage"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card className="image-box card w-100">
-                    <img className="center " src={p1} />
-                    <Card.Body>
-                      <p className="product-price-on-card">Price: £2</p>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Card>
-            </Col>
-            <Col className="p-2" key={2} xl={3} lg={4} sm={4} xs={6} md={4}>
-              <Card>
-                <Link
-                  to="/ProductPage"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card className="image-box card w-100">
-                    <img className="center" src={p2} />
-                    <Card.Body>
-                      <p className="product-price-on-card">Price: £2</p>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Card>
-            </Col>
-            <Col className="p-2" key={3} xl={3} lg={4} sm={4} xs={6} md={4}>
-              <Card>
-                <Link
-                  to="/ProductPage"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card className="image-box card w-100">
-                    <img className="center" src={p3} />
-                    <Card.Body>
-                      <p className="product-price-on-card">Price: £2</p>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Card>
-            </Col>
-            <Col className="p-2" key={4} xl={3} lg={4} sm={4} xs={6} md={4}>
-              <Card>
-                <Link
-                  to="/ProductPage"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card className="image-box card w-100">
-                    <img className="center " src={p4} />
-                    <Card.Body>
-                      <p className="product-price-on-card">Price: £2</p>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Card>
-            </Col>
-            <Col className="p-2" key={5} xl={3} lg={4} sm={4} xs={6} md={4}>
-              <Card>
-                <Link
-                  to="/ProductPage"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card className="image-box card w-100">
-                    <img className="center" src={p5} />
-                    <Card.Body>
-                      <p className="product-price-on-card">Price: £2</p>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Card>
-            </Col>
-            <Col className="p-2" key={6} xl={3} lg={4} sm={4} xs={6} md={4}>
-              <Card>
-                <Link
-                  to="/ProductPage"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card className="image-box card w-100">
-                    <img className="center " src={p6} />
-                    <Card.Body>
-                      <p className="product-price-on-card">Price: £2</p>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Card>
-            </Col>
-          </Row>
+          <Row>{renderNewArrivals}</Row>
         </Container>
       </Fragment>
     );

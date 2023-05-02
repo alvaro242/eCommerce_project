@@ -8,6 +8,7 @@ import BasketPage from "../pages/basketPage";
 import AboutPage from "../pages/aboutPage";
 import CategoryPage from "../pages/categoryPage";
 import SubcategoryPage from "../pages/subcategoryPage";
+import AllCategoriesPage from "../pages/allCategoriesPage";
 
 export class AppRoute extends Component {
   render() {
@@ -17,15 +18,20 @@ export class AppRoute extends Component {
           <Route exact path="/" component={homePage}></Route>
           <Route exact path="/login" component={LoginPage}></Route>
           <Route exact path="/contact" component={ContactPage}></Route>
-          <Route exact path="/product" component={ProductPage}></Route>
+          <Route
+            exact
+            path="/product/:productid"
+            component={ProductPage}
+          ></Route>
           <Route exact path="/basket" component={BasketPage}></Route>
           <Route exact path="/about" component={AboutPage}></Route>
-          <Route exact path="/category/:category" component={CategoryPage} />
+          <Route exact path="/categories/:category" component={CategoryPage} />
           <Route
             exact
             path="/subcategories/:subcategory"
             component={SubcategoryPage}
           />
+          <Route exact path="/categories" component={AllCategoriesPage} />
         </Switch>
       </Fragment>
     );

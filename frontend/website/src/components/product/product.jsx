@@ -1,9 +1,119 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import Product1 from "./../../assets/images/products/colombia2.png";
+import { getServerURL } from "../api/api";
+import ReactHtmlParser from "react-html-parser";
 
 class Product extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: "",
+    };
+  }
+
+  componentDidMount() {}
+
+  renderName(productDetails) {
+    if (typeof productDetails != undefined && productDetails.length !== 0) {
+      return productDetails[0].name;
+    }
+  }
+
+  renderName(productDetails) {
+    if (typeof productDetails != undefined && productDetails.length !== 0) {
+      return productDetails[0].name;
+    }
+  }
+
+  renderIMG1(productDetails) {
+    if (typeof productDetails != undefined && productDetails.length !== 0) {
+      return getServerURL() + productDetails[0].image_1;
+    }
+  }
+
+  rendersku(productDetails) {
+    if (typeof productDetails != undefined && productDetails.length !== 0) {
+      return productDetails[0].sku;
+    }
+  }
+
+  renderBrand(productDetails) {
+    if (typeof productDetails != undefined && productDetails.length !== 0) {
+      return productDetails[0].brand;
+    }
+  }
+
+  renderDescription(productDetails) {
+    if (typeof productDetails != undefined && productDetails.length !== 0) {
+      return productDetails[0].description;
+    }
+  }
+
+  renderOptions(productDetails) {
+    // if category is coffee then show grind options
+    if (typeof productDetails != undefined && productDetails.length !== 0) {
+      if (productDetails[0].category == "Coffee") {
+        return (
+          <Fragment>
+            <h6 className="mt-2">Choose blend</h6>
+            <div className="input-group">
+              <div className="form-check mx-1">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="exampleRadios"
+                  id="exampleRadios1"
+                  value="option1"
+                />
+                <label className="form-check-label" htmlFor="exampleRadios1">
+                  Beans
+                </label>
+              </div>
+              <div className="form-check mx-1">
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="exampleRadios"
+                  id="exampleRadios1"
+                  value="option1"
+                />
+                <label className="form-check-label" htmlFor="exampleRadios1">
+                  Grounded (£2 extra)
+                </label>
+              </div>
+            </div>
+          </Fragment>
+        );
+      }
+    }
+  }
+
+  renderPrice(productDetails) {
+    if (typeof productDetails != undefined && productDetails.length !== 0) {
+      if (productDetails[0].offer_price == "") {
+        return <p className=" h3">£{productDetails[0].price}</p>;
+      } else {
+        return (
+          <Fragment>
+            <strike>{productDetails[0].price}</strike>
+            <p className="text-success h2">£{productDetails[0].offer_price}</p>
+          </Fragment>
+        );
+      }
+    }
+  }
+
+  htmlParser(html) {
+    let parseHTML = ReactHtmlParser(html);
+
+    return parseHTML;
+  }
+
   render() {
+    const productDetails = this.props.productDetails;
+
     return (
       <Fragment>
         <p className="p-4"> </p>
@@ -18,124 +128,27 @@ class Product extends Component {
             >
               <Row>
                 <Col className="p-3" md={6} lg={6} sm={12} xs={12}>
-                  <img className="w-100" src={Product1} />
-                  <Container className="my-3">
-                    <Row>
-                      <Col className="p-0 m-0" md={3} lg={3} sm={3} xs={3}>
-                        <img className="w-100" src={Product1} />
-                      </Col>
-                      <Col className="p-0 m-0" md={3} lg={3} sm={3} xs={3}>
-                        <img className="w-100" src={Product1} />
-                      </Col>
-                      <Col className="p-0 m-0" md={3} lg={3} sm={3} xs={3}>
-                        <img className="w-100" src={Product1} />
-                      </Col>
-                      <Col className="p-0 m-0" md={3} lg={3} sm={3} xs={3}>
-                        <img className="w-100" src={Product1} />
-                      </Col>
-                    </Row>
-                  </Container>
+                  <img
+                    className="w-100"
+                    src={this.renderIMG1(productDetails)}
+                  />
                 </Col>
                 <Col className="p-3 " md={6} lg={6} sm={12} xs={12}>
                   <h5 className="Product-Name">
-                    COLOMBIAN DOUBLE ROASTED MAGIC FLAVOUR
+                    {this.renderName(productDetails)}
                   </h5>
-                  <h6></h6>
-
-                  <h6 className="mt-2">Choose blend</h6>
-                  <div className="input-group">
-                    <div className="form-check mx-1">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="exampleRadios"
-                        id="exampleRadios1"
-                        value="option1"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="exampleRadios1"
-                      >
-                        Beans
-                      </label>
-                    </div>
-                    <div className="form-check mx-1">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="exampleRadios"
-                        id="exampleRadios1"
-                        value="option1"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="exampleRadios1"
-                      >
-                        Grounded (£2 extra)
-                      </label>
-                    </div>
-                    <div className="form-check mx-1">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="exampleRadios"
-                        id="exampleRadios1"
-                        value="option1"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="exampleRadios1"
-                      >
-                        Mokka /
-                      </label>
-                    </div>
-                  </div>
-
-                  <h6 className="mt-2">Choose Size</h6>
-                  <div className="input-group">
-                    <div className="form-check mx-1">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="exampleRadios"
-                        id="exampleRadios1"
-                        value="option1"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="exampleRadios1"
-                      >
-                        500g
-                      </label>
-                    </div>
-                    <div className="form-check mx-1">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="exampleRadios"
-                        id="exampleRadios1"
-                        value="option1"
-                      />
-                      <label
-                        className="form-check-label"
-                        htmlFor="exampleRadios1"
-                      >
-                        1Kg
-                      </label>
-                    </div>
-                  </div>
-
+                  <p className="h7 text-secondary">
+                    SKU: {this.rendersku(productDetails)} | Brand:{" "}
+                    {this.renderBrand(productDetails)}
+                  </p>{" "}
+                  {this.renderPrice(productDetails)}
+                  {this.renderOptions(productDetails)}
                   <h6 className="mt-2">Quantity</h6>
-                  <input className="form-control-sm  " type="number" />
-
                   <div className="input-group mt-3">
-                    <button className="btn site-btn m-1 ">
+                    <input className="form-control-sm  " type="number" />
+                    <button className="btn btn-primary m-1 ">
                       {" "}
                       <i className="fa fa-shopping-cart "></i> Add To Cart
-                    </button>
-                    <button className="btn btn-primary m-1">
-                      {" "}
-                      <i className="fa fa-car"></i> Order Now
                     </button>
                   </div>
                 </Col>
@@ -144,24 +157,7 @@ class Product extends Component {
               <Row>
                 <Col className="" md={6} lg={12} sm={12} xs={12}>
                   <h6 className="mt-2">DETAILS</h6>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                    magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                    quis nostrud exerci tation Lorem ipsum dolor sit amet,
-                    consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
-                    wisi enim ad minim veniam, quis nostrud exerci tation
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                    magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
-                    quis nostrud exerci tation Lorem ipsum dolor sit amet,
-                    consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                    tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut
-                    wisi enim ad minim veniam, quis nostrud exerci tation
-                  </p>
+                  {this.htmlParser(this.renderDescription(productDetails))}
                 </Col>
               </Row>
             </Col>

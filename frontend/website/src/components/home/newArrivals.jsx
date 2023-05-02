@@ -11,7 +11,7 @@ import p7 from "../../assets/images/products/noBackground/Peru.png";
 import p8 from "../../assets/images/products/noBackground/Vietnam.png";
 import { getProductsByFeatureNew, getServerURL } from "../api/api";
 
-export class ItemsList extends Component {
+export class NewArrivals extends Component {
   constructor(props) {
     super(props);
 
@@ -34,25 +34,24 @@ export class ItemsList extends Component {
 
   render() {
     const newArrivals = this.state.newarrivals;
-    const renderNewArrivals = newArrivals.map((newArrivalItem, index) => {
+    const renderNewArrivals = newArrivals.map((product, index) => {
       if (newArrivals.offer_price !== "") {
         return (
           <Col className="p-2" key={index} xl={3} lg={4} sm={4} xs={6} md={4}>
             <Card>
               <Link
-                to="/product"
+                to={"/product/" + product.id}
                 style={{ textDecoration: "none", color: "black" }}
               >
                 <Card className="image-box card w-100">
                   <img
                     className="center "
-                    src={getServerURL() + newArrivalItem.image_nobackground}
+                    src={getServerURL() + product.image_nobackground}
                   />
                   <Card.Body>
-                    <p>{newArrivalItem.name} </p>
+                    <p>{product.name} </p>
                     <p>
-                      <strike>£{newArrivalItem.price} </strike> £
-                      {newArrivalItem.offer_price}
+                      <strike>£{product.price} </strike> £{product.offer_price}
                     </p>
                   </Card.Body>
                 </Card>
@@ -65,17 +64,17 @@ export class ItemsList extends Component {
           <Col className="p-2" key={index} xl={3} lg={4} sm={4} xs={6} md={4}>
             <Card>
               <Link
-                to="/Product"
+                to={"/product/" + product.id}
                 style={{ textDecoration: "none", color: "black" }}
               >
                 <Card className="image-box card w-100">
                   <img
                     className="center "
-                    src={getServerURL() + newArrivalItem.image_nobackground}
+                    src={getServerURL() + product.image_nobackground}
                   />
                   <Card.Body>
-                    <p>{newArrivalItem.name} </p>
-                    <p>£{newArrivalItem.offer_price}</p>
+                    <p>{product.name} </p>
+                    <p>£{product.offer_price}</p>
                   </Card.Body>
                 </Card>
               </Link>
@@ -99,4 +98,4 @@ export class ItemsList extends Component {
   }
 }
 
-export default ItemsList;
+export default NewArrivals;

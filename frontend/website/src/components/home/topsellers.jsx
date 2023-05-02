@@ -4,12 +4,12 @@ import "./../../assets/css/card.css";
 import { getProductsByFeatureTopSellers, getServerURL } from "../api/api";
 import { Link } from "react-router-dom";
 
-class FeaturedProducts extends Component {
+class TopSellerProducts extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      topsellingProducts: [],
+      topsellerProducts: [],
     };
   }
 
@@ -20,32 +20,31 @@ class FeaturedProducts extends Component {
   async getData() {
     await getProductsByFeatureTopSellers()
       .then((response) => {
-        this.setState({ topsellingProducts: response.data });
+        this.setState({ topsellerProducts: response.data });
       })
       .catch((error) => console.log(error));
   }
 
   render() {
-    const featuredProducts = this.state.topsellingProducts;
+    const topsellers = this.state.topsellerProducts;
 
-    const renderBestSellers = featuredProducts.map((featuredProduct, index) => {
-      if (featuredProduct.offer_price !== "") {
+    const renderBestSellers = topsellers.map((product, index) => {
+      if (product.offer_price !== "") {
         return (
           <Col className="p-2" key={index} xl={2} lg={4} sm={4} xs={6} md={4}>
             <Link
-              to="/Product"
+              to={"/product/" + product.id}
               style={{ textDecoration: "none", color: "black" }}
             >
               <Card className="card ">
                 <img
                   className="center"
-                  src={getServerURL() + featuredProduct.image_nobackground}
+                  src={getServerURL() + product.image_nobackground}
                 />
                 <Card.Body>
-                  <p>{featuredProduct.name} </p>
+                  <p>{product.name} </p>
                   <p>
-                    <strike>£{featuredProduct.price} </strike> £
-                    {featuredProduct.offer_price}
+                    <strike>£{product.price} </strike> £{product.offer_price}
                   </p>
                 </Card.Body>
               </Card>
@@ -56,21 +55,17 @@ class FeaturedProducts extends Component {
         return (
           <Col className="p-2" key={index} xl={2} lg={4} sm={4} xs={6} md={4}>
             <Link
-              to="/Product"
+              to={"/product/" + product.id}
               style={{ textDecoration: "none", color: "black" }}
             >
               <Card className="card ">
                 <img
                   className="center"
-                  src={getServerURL() + featuredProduct.image_nobackground}
+                  src={getServerURL() + product.image_nobackground}
                 />
                 <Card.Body>
-                  <p className="product-name-on-card">
-                    {featuredProduct.name}{" "}
-                  </p>
-                  <p className="product-price-on-card">
-                    £{featuredProduct.price}
-                  </p>
+                  <p className="product-name-on-card">{product.name} </p>
+                  <p className="product-price-on-card">£{product.price}</p>
                 </Card.Body>
               </Card>
             </Link>
@@ -93,4 +88,4 @@ class FeaturedProducts extends Component {
   }
 }
 
-export default FeaturedProducts;
+export default TopSellerProducts;

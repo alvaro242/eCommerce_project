@@ -3,7 +3,7 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import { getServerURL } from "../api/api";
 import { Link } from "react-router-dom";
 
-class Categories extends Component {
+class CoffeeCategories extends Component {
   constructor(props) {
     super(props);
 
@@ -53,4 +53,4 @@ class Categories extends Component {
     );
   }
 }
-export default Categories;
+export default CoffeeCategories;

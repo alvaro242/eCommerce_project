@@ -104,3 +104,42 @@ export async function getProductsByFeatureTopSellers() {
       return error;
     });
 }
+
+export async function getSubcategoriesByCategoryName(Category) {
+  let url = getServerURL() + "api/subcategories/category=" + Category;
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export async function getProductByID(id) {
+  let url = getServerURL() + "api/products/id=" + id;
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export async function getProductsByInput(search) {
+  let url = getServerURL() + "api/products/search=" + search;
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}

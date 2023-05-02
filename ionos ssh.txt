@@ -1,3 +1,6 @@
 access946799793.webspace-data.io
 22
 u110735659
+
+/usr/bin/php8.1 artisan route:cache
+/usr/bin/php8.1 artisan l5-swagger:generate

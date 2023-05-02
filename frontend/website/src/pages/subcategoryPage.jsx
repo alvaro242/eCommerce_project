@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from "react";
-import Categories from "../components/home/categories";
+import Categories from "../components/home/coffeeCategories";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 import { getAllCategories } from "../components/api/api";
 import { Container } from "react-bootstrap";
 import { getProductsBySubcategory } from "../components/api/api";
-import Subcategory from "../components/product/subcategory";
+import SubcategoryContent from "../components/product/subcategoryContent";
+import { Link } from "react-router-dom";
 
 class SubcategoryPage extends Component {
   constructor({ match }) {
@@ -13,13 +14,23 @@ class SubcategoryPage extends Component {
 
     this.state = {
       subcategoryName: match.params.subcategory,
+      parentCategory: "",
       products: [],
     };
   }
   componentDidMount() {
     window.scroll(0, 0);
-    getProductsBySubcategory()
-      .then((response) => this.setState({ products: response.data }))
+    this.getData();
+  }
+
+  async getData() {
+    await getProductsBySubcategory(this.state.subcategoryName)
+      .then((response) =>
+        this.setState({
+          products: response.data,
+          parentCategory: response.data[0].category,
+        })
+      )
       .catch((error) => console.log(error));
   }
 
@@ -28,13 +39,29 @@ class SubcategoryPage extends Component {
       <Fragment>
         <Container>
           <NavMenu></NavMenu>
-          <Subcategory
-            subcatName={this.state.subcategoryName}
+          <div>{<h2>{this.state.subcategoryName}</h2>}</div>
+          <div>
+            <Link
+              to={"/categories/"}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              All categories
+            </Link>{" "}
+            &gt;{" "}
+            <Link
+              to={"/categories/" + this.state.parentCategory}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              {this.state.parentCategory}{" "}
+            </Link>{" "}
+            &gt; {this.state.subcategoryName}
+          </div>
+          <SubcategoryContent
+            subcategoryName={this.state.subcategoryName}
             products={this.state.products}
-          ></Subcategory>
-          <div>{this.state.subcategoryName}</div>
-          <Footer></Footer>
+          ></SubcategoryContent>
         </Container>
+        <Footer></Footer>
       </Fragment>
     );
   }

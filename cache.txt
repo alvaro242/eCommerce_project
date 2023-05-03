@@ -1,0 +1,11 @@
+clear cache
+clear config 
+clear  routes
+
+
+
+artisan cache:clear 
+artisan route:clear
+artisan config:clear
+artisan view:clear
+artisan cache:forget key

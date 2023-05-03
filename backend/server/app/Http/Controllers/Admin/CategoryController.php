@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Subcategory;
 
+/**
+ * @OA\Get(
+ *     path="/categories",
+ * tags={"categories"},
+ *     @OA\Response(response="200", description="Obtain categories")
+ * )
+ */
+
+
 class CategoryController extends Controller
 {
     public function getAllCategories(){

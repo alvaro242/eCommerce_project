@@ -9,6 +9,7 @@ import AboutPage from "../pages/aboutPage";
 import CategoryPage from "../pages/categoryPage";
 import SubcategoryPage from "../pages/subcategoryPage";
 import AllCategoriesPage from "../pages/allCategoriesPage";
+import SearchResultsPage from "../pages/searchResultsPage";
 
 export class AppRoute extends Component {
   render() {
@@ -32,6 +33,15 @@ export class AppRoute extends Component {
             component={SubcategoryPage}
           />
           <Route exact path="/categories" component={AllCategoriesPage} />
+          <Route exact path="/categories" component={AllCategoriesPage} />
+
+          <Route
+            exact
+            path="/search=:searchInput"
+            render={(props) => (
+              <SearchResultsPage {...props} key={Date.now()} />
+            )}
+          />
         </Switch>
       </Fragment>
     );

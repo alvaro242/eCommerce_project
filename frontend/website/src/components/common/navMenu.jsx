@@ -1,12 +1,39 @@
 import React, { Component, Fragment } from "react";
 import { Navbar, Container, Row, Col, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export class NavMenu extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      searchInput: "",
+      redirect: false,
+    };
+    this.inputOnChange = this.inputOnChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.redirect = this.redirectIfSearch.bind(this);
+  }
+
+  inputOnChange(event) {
+    this.setState({ searchInput: event.target.value });
+  }
+
+  handleSearch() {
+    if (this.state.searchInput !== "") {
+      this.setState({ redirect: true });
+    }
+  }
+
+  redirectIfSearch() {
+    if (this.state.redirect == true) {
+      return <Redirect to={"/search=" + this.state.searchInput}></Redirect>;
+    }
+  }
+
   render() {
     return (
       <Fragment>
-        {" "}
         <Navbar expand="lg" fixed="top">
           <Container fluid={"true"} className="fixed-top px-3 mb-2 bg-white">
             <Row>
@@ -16,10 +43,19 @@ export class NavMenu extends Component {
                 </Link>
               </Col>
 
-              <Col className="px-5 mt-1" lg={4} md={4} sm={12} xs={12}>
+              <Col className="px-5 mt-1" lg={4} md={4} sm={6} xs={4}>
                 <div className="input-group  w-100">
-                  <input type="text" className="form-control" />
-                  <Button type="button" className="btn search-btn">
+                  <input
+                    type="text"
+                    className="form-control"
+                    onChange={this.inputOnChange}
+                  />
+                  <Button
+                    type="button"
+                    title="search"
+                    className="btn search-btn"
+                    onClick={this.handleSearch}
+                  >
                     <i className="fa fa-search"> </i>
                   </Button>
                 </div>
@@ -48,6 +84,7 @@ export class NavMenu extends Component {
                 </Link>
               </Col>
             </Row>
+            {this.redirectIfSearch()}
           </Container>
         </Navbar>
         <p className="p-4"></p>

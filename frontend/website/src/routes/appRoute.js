@@ -10,6 +10,7 @@ import CategoryPage from "../pages/categoryPage";
 import SubcategoryPage from "../pages/subcategoryPage";
 import AllCategoriesPage from "../pages/allCategoriesPage";
 import SearchResultsPage from "../pages/searchResultsPage";
+import MyAccountPage from "../pages/myAccountPage";
 
 export class AppRoute extends Component {
   render() {
@@ -41,6 +42,11 @@ export class AppRoute extends Component {
             render={(props) => (
               <SearchResultsPage {...props} key={Date.now()} />
             )}
+          />
+          <Route
+            exact
+            path="/account"
+            render={(props) => <MyAccountPage {...props} key={Date.now()} />}
           />
         </Switch>
       </Fragment>

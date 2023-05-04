@@ -4,6 +4,7 @@ import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 import { getProductByID } from "../components/api/api";
 import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
 
 class ProductPage extends Component {
   constructor({ match }) {
@@ -19,7 +20,7 @@ class ProductPage extends Component {
   }
 
   componentDidMount() {
-    window.scroll(0, 0);
+    window.scroll({ top: 100, left: 100, behavior: "smooth" });
     this.getData();
   }
   async getData() {
@@ -39,8 +40,9 @@ class ProductPage extends Component {
     return (
       <Fragment>
         <NavMenu />
+        <p className="p-4"></p>
 
-        <div>
+        <Container className="p-4">
           <Link
             to={"/categories/"}
             style={{ textDecoration: "none", color: "black" }}
@@ -61,7 +63,7 @@ class ProductPage extends Component {
           >
             {this.state.productSubcategory}
           </Link>
-        </div>
+        </Container>
         <Product productDetails={this.state.productDetails} />
         <Footer />
       </Fragment>

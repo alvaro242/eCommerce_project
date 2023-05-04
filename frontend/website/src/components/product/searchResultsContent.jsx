@@ -13,7 +13,7 @@ class SearchResultsContent extends Component {
       return (
         <Col className="p-2" key={index} xl={2} lg={4} sm={4} xs={6} md={4}>
           <Link
-            to={"/subcategories/" + product.name}
+            to={"/product/" + product.id}
             style={{ textDecoration: "none", color: "black" }}
           >
             <Card className="card ">

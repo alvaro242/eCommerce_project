@@ -143,3 +143,16 @@ export async function getProductsByInput(search) {
       return error;
     });
 }
+
+export async function login(data) {
+  let url = getServerURL() + "api/login";
+
+  return axios
+    .post(url, data)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}

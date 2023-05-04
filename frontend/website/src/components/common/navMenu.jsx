@@ -37,13 +37,13 @@ export class NavMenu extends Component {
         <Navbar expand="lg" fixed="top">
           <Container fluid={"true"} className="fixed-top px-3 mb-2 bg-white">
             <Row>
-              <Col className="px-2" lg={4} md={4} sm={12} xs={12}>
+              <Col className="px-2" lg={3} md={3} sm={12} xs={12}>
                 <Link to="/" className="px-5">
                   <img src="https://www.iconexperience.com/_img/o_collection_png/office/64x64/plain/coffee_bean.png" />
                 </Link>
               </Col>
 
-              <Col className="px-5 mt-1" lg={4} md={4} sm={6} xs={4}>
+              <Col className="px-5 mt-1" lg={6} md={6} sm={7} xs={7}>
                 <div className="input-group  w-100">
                   <input
                     type="text"
@@ -62,13 +62,13 @@ export class NavMenu extends Component {
               </Col>
               <Col
                 className="px-4 mt-2 text-center"
-                lg={4}
-                md={4}
-                sm={12}
-                xs={12}
+                lg={3}
+                md={3}
+                sm={5}
+                xs={5}
               >
                 <Link to="/login" className="h4 btn">
-                  LOGIN
+                  <i className="fa fa-user-circle-o"> </i>
                 </Link>
                 <Link to="/basketPage">
                   <Button className="cart" variant="light">
@@ -79,7 +79,7 @@ export class NavMenu extends Component {
                 <Link to="/basketPage">
                   <Button className="cart-btn">
                     {" "}
-                    <i className="fa fa-shopping-cart"> 3 items</i>
+                    <i className="fa fa-shopping-cart"> 3</i>
                   </Button>{" "}
                 </Link>
               </Col>

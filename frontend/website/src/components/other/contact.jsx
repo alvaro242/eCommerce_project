@@ -32,12 +32,12 @@ export class Contact extends Component {
     return (
       <Fragment>
         <Container>
-          <p className="p-5"></p>
+          <p className="p-2"></p>
           <Row>
             <Col md={12} lg={12} sm={12} xs={12}></Col>
           </Row>
           <Row>
-            <Col md={6} lg={6} sm={12} xs={12}>
+            <Col md={12} lg={12} sm={12} xs={12}>
               <Fragment>
                 <Container>
                   <Row className="p-2">
@@ -51,8 +51,8 @@ export class Contact extends Component {
                       <Row className="text-center">
                         <Col
                           className="d-flex justify-content-center"
-                          md={6}
-                          lg={6}
+                          md={12}
+                          lg={12}
                           sm={12}
                           xs={12}
                         >
@@ -95,29 +95,11 @@ export class Contact extends Component {
                             </Button>
                           </Form>
                         </Col>
-
-                        <Col
-                          className="p-0 Desktop m-0 "
-                          md={6}
-                          lg={6}
-                          sm={6}
-                          xs={6}
-                        >
-                          <br></br>
-                          <br></br>
-                          <div className="section-title-contact">
-                            {this.state.address}{" "}
-                          </div>
-                          <div>{this.state.email}</div>
-                        </Col>
                       </Row>
                     </Col>
                   </Row>
                 </Container>
               </Fragment>
-            </Col>
-            <Col className="p-0 Desktop m-0" md={6} lg={6} sm={6} xs={6}>
-              <img className="loginBanner" />
             </Col>
           </Row>
         </Container>

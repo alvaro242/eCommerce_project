@@ -40,9 +40,8 @@ class ProductPage extends Component {
     return (
       <Fragment>
         <NavMenu />
-        <p className="p-4"></p>
 
-        <Container className="p-4">
+        <Container>
           <Link
             to={"/categories/"}
             style={{ textDecoration: "none", color: "black" }}

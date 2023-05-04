@@ -9,11 +9,15 @@ class LoginPage extends Component {
     window.scroll(0, 0);
   }
   render() {
+    const setUser = this.props.setUser;
+    const user = this.props.user;
+
     return (
       <Fragment>
         <Container>
+          {console.log(user)}
           <NavMenu />
-          <Login />
+          <Login setUser={setUser} user={user} />
         </Container>
         <Footer />
       </Fragment>

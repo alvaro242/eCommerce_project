@@ -38,7 +38,7 @@ class CoffeeCategories extends Component {
 
     return (
       <Fragment>
-        <p className="p-4"></p>
+        <p className=""></p>
 
         <Container className="center p=2" fluid={true}>
           <Row>

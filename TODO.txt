@@ -1,0 +1,7 @@
+Priority 1(lowest) to 5 (highest)
+
+
+Priority 1 -> Change logo, 
+Priority 2 -> Google / Microsoft log in 
+Priority 2 - > implement forget password and restart password on laravel passport and their relevant pages on frontend,
+Priority 3 -> Mock data to database for showcase

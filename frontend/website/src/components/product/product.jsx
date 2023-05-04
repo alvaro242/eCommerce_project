@@ -116,7 +116,6 @@ class Product extends Component {
 
     return (
       <Fragment>
-        <p className="p-4"> </p>
         <Container className="">
           <Row className="p-2">
             <Col
@@ -127,7 +126,7 @@ class Product extends Component {
               xs={12}
             >
               <Row>
-                <Col className="p-3" md={6} lg={6} sm={12} xs={12}>
+                <Col md={6} lg={6} sm={12} xs={12}>
                   <img
                     className="w-100"
                     src={this.renderIMG1(productDetails)}

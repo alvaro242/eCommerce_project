@@ -1,12 +1,13 @@
 import axios from "axios";
 
-let serverIP = "https://server.alvarodominguezmora.com/";
-
 export function getServerURL() {
   let serverURL = "https://server.alvarodominguezmora.com/";
 
   return serverURL;
 }
+
+axios.defaults.headers.common["Authorization"] =
+  "Bearer " + localStorage.getItem("token");
 
 export function postVisitorDetails() {
   let url = getServerURL() + "api/visitor";
@@ -149,6 +150,32 @@ export async function login(data) {
 
   return axios
     .post(url, data)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export async function signUp(data) {
+  let url = getServerURL() + "api/signup";
+
+  return axios
+    .post(url, data)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export async function getUserData() {
+  let url = getServerURL() + "api/user";
+
+  return axios
+    .get(url)
     .then((response) => {
       return response;
     })

@@ -11,14 +11,45 @@ import SubcategoryPage from "../pages/subcategoryPage";
 import AllCategoriesPage from "../pages/allCategoriesPage";
 import SearchResultsPage from "../pages/searchResultsPage";
 import MyAccountPage from "../pages/myAccountPage";
+import { getUserData, getWebInfo } from "../components/api/api";
+import NavMenu from "../components/common/navMenu";
 
 export class AppRoute extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      user: {},
+    };
+  }
+
+  componentDidMount() {
+    getUserData()
+      .then((response) => console.log(response) & this.setUser(response.data))
+      .catch((error) => error);
+  }
+
+  setUser = (user) => {
+    this.setState({ user: user });
+  };
   render() {
     return (
       <Fragment>
+        <NavMenu user={this.state.user} setUser={this.setUser} />
         <Switch>
           <Route exact path="/" component={homePage}></Route>
-          <Route exact path="/login" component={LoginPage}></Route>
+          <Route
+            exact
+            path="/login"
+            render={(props) => (
+              <LoginPage
+                user={this.state.user}
+                setUser={this.setUser}
+                {...props}
+                key={Date.now()}
+              />
+            )}
+          />
           <Route exact path="/contact" component={ContactPage}></Route>
           <Route
             exact
@@ -43,10 +74,18 @@ export class AppRoute extends Component {
               <SearchResultsPage {...props} key={Date.now()} />
             )}
           />
+
           <Route
             exact
             path="/account"
-            render={(props) => <MyAccountPage {...props} key={Date.now()} />}
+            render={(props) => (
+              <MyAccountPage
+                user={this.state.user}
+                setUser={this.setUser}
+                {...props}
+                key={Date.now()}
+              />
+            )}
           />
         </Switch>
       </Fragment>

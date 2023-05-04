@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Navbar, Container, Row, Col, Button } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
+import gimmeBeansLogo from "../../assets/logo.png";
 
 export class NavMenu extends Component {
   constructor(props) {
@@ -31,19 +32,70 @@ export class NavMenu extends Component {
     }
   }
 
+  logOut() {
+    localStorage.clear();
+  }
+
   render() {
+    let menuOptions = <div></div>;
+
+    if (localStorage.getItem("token")) {
+      menuOptions = (
+        <div>
+          <Link to="/account" className="h4 btn">
+            <i className="fa fa-user-circle-o"> </i>
+          </Link>
+          <Link
+            to="/"
+            onClick={this.logOut}
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            LOGOUT
+          </Link>
+          <Link to="/basket">
+            <Button className="cart-btn">
+              {" "}
+              <i className="fa fa-shopping-cart"> 3</i>
+            </Button>{" "}
+          </Link>
+        </div>
+      );
+    } else {
+      menuOptions = (
+        <div>
+          <Link to="/login" className="h4 btn">
+            Log in | Sign Up
+          </Link>
+
+          <Link to="/basket">
+            <Button className="cart-btn">
+              {" "}
+              <i className="fa fa-shopping-cart"> 3</i>
+            </Button>{" "}
+          </Link>
+        </div>
+      );
+    }
     return (
       <Fragment>
-        <Navbar expand="lg" fixed="top">
-          <Container fluid={"true"} className="fixed-top px-3 mb-2 bg-white">
-            <Row>
-              <Col className="px-2" lg={3} md={3} sm={12} xs={12}>
+        <Navbar expand="lg">
+          <Container fluid={"true"} className="fixed-top  mb-2 ">
+            <Row className="bg-white ">
+              <Col className="px-2" lg={5} md={5} sm={3} xs={3}>
                 <Link to="/" className="px-5">
                   <img src="https://www.iconexperience.com/_img/o_collection_png/office/64x64/plain/coffee_bean.png" />
                 </Link>
               </Col>
 
-              <Col className="px-5 mt-1" lg={6} md={6} sm={7} xs={7}>
+              <Col lg={4} md={3} sm={2} xs={2}></Col>
+
+              <Col className="px-4 mt-2 " lg={3} md={4} sm={7} xs={7}>
+                {menuOptions}
+              </Col>
+            </Row>
+
+            <Row className="bg-warning p-1 ">
+              <Col className="px-5 mt-1" lg={12} md={12} sm={12} xs={12}>
                 <div className="input-group  w-100">
                   <input
                     type="text"
@@ -60,30 +112,8 @@ export class NavMenu extends Component {
                   </Button>
                 </div>
               </Col>
-              <Col
-                className="px-4 mt-2 text-center"
-                lg={3}
-                md={3}
-                sm={5}
-                xs={5}
-              >
-                <Link to="/login" className="h4 btn">
-                  <i className="fa fa-user-circle-o"> </i>
-                </Link>
-                <Link to="/basketPage">
-                  <Button className="cart" variant="light">
-                    {" "}
-                    <i className="fa fa-shopping-cart"></i>
-                  </Button>
-                </Link>
-                <Link to="/basketPage">
-                  <Button className="cart-btn">
-                    {" "}
-                    <i className="fa fa-shopping-cart"> 3</i>
-                  </Button>{" "}
-                </Link>
-              </Col>
             </Row>
+
             {this.redirectIfSearch()}
           </Container>
         </Navbar>

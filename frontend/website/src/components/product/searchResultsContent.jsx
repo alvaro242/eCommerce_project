@@ -29,7 +29,7 @@ class SearchResultsContent extends Component {
     return (
       <Fragment>
         <Container>
-          <p className="p-5"></p>
+          <p className="p-1"></p>
           <h3>
             Results for: <i className="h7 text-secondary">{searchInput}</i>
           </h3>

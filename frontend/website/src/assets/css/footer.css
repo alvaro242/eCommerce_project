@@ -2,7 +2,7 @@
   background-color: #e9b148;
 }
 .footer-text {
-  font-size: 13px;
+  font-size: 12px;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 600;
 }
@@ -10,7 +10,7 @@
 .footer-link {
   text-decoration: none;
   color: #000000;
-  font-size: 15px;
+  font-size: 12px;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 400;
 }
@@ -20,7 +20,7 @@
 }
 
 .footer-menu-title {
-  font-size: 18px;
+  font-size: 16px;
   color: #000000;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 600;

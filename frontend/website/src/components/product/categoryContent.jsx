@@ -17,7 +17,7 @@ export class CategoryContent extends Component {
 
     const rendersubCategories = subcategories.map((subcategory, index) => {
       return (
-        <Col className="p-2" key={index} xl={2} lg={4} sm={4} xs={6} md={4}>
+        <Col key={index} xl={2} lg={4} sm={4} xs={6} md={4}>
           <Link
             to={"/subcategories/" + subcategory.name}
             style={{ textDecoration: "none", color: "black" }}
@@ -38,7 +38,7 @@ export class CategoryContent extends Component {
     return (
       <Fragment>
         <Container>
-          <p className="p-5"></p>
+          <p className="p-2"></p>
           <Row>{rendersubCategories}</Row>
         </Container>
       </Fragment>

@@ -3,9 +3,10 @@ clear config
 clear  routes
 
 
-
+export PHP_PATH=/usr/local/bin/php8.1
 artisan cache:clear 
 artisan route:clear
 artisan config:clear
 artisan view:clear
 artisan cache:forget key
+

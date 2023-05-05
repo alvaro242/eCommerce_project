@@ -4,7 +4,7 @@ import CoffeeCategories from "../components/home/coffeeCategories";
 import NewArrivals from "../components/home/newArrivals";
 
 import { Container } from "react-bootstrap";
-import SimpleSlider from "../components/home/simpleSlider";
+import Carousel from "../components/home/carousel";
 import "../assets/css/home.css";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
@@ -58,7 +58,7 @@ export class homePage extends Component {
           <NavMenu />
           {this.renderCategeories()}
 
-          <SimpleSlider />
+          {/*} <Carousel /> {*/}
           <TopSellerProducts />
 
           <NewArrivals />

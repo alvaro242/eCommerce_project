@@ -36,6 +36,13 @@ export class NavMenu extends Component {
     localStorage.clear();
   }
 
+  triggerSearch = (event) => {
+    console.log(event);
+    if (event.keyCode == 13) {
+      this.handleSearch();
+    }
+  };
+
   render() {
     let menuOptions = <div></div>;
 
@@ -52,11 +59,8 @@ export class NavMenu extends Component {
           >
             LOGOUT
           </Link>
-          <Link to="/basket">
-            <Button className="cart-btn">
-              {" "}
-              <i className="fa fa-shopping-cart"> 3</i>
-            </Button>{" "}
+          <Link to="/basket" style={{ textDecoration: "none", color: "black" }}>
+            <i className="fa fa-shopping-cart"></i>
           </Link>
         </div>
       );
@@ -67,11 +71,8 @@ export class NavMenu extends Component {
             Log in | Sign Up
           </Link>
 
-          <Link to="/basket">
-            <Button className="cart-btn">
-              {" "}
-              <i className="fa fa-shopping-cart"> 3</i>
-            </Button>{" "}
+          <Link to="/basket" style={{ textDecoration: "none", color: "black" }}>
+            <i className="fa fa-shopping-cart"></i>
           </Link>
         </div>
       );
@@ -101,10 +102,13 @@ export class NavMenu extends Component {
                     type="text"
                     className="form-control"
                     onChange={this.inputOnChange}
+                    onKeyDown={this.triggerSearch}
+                    tabIndex="0"
                   />
                   <Button
                     type="button"
                     title="search"
+                    id="search"
                     className="btn search-btn"
                     onClick={this.handleSearch}
                   >

@@ -78,8 +78,8 @@ class TopSellerProducts extends Component {
       <Fragment>
         <Container className="text-center center p-2" fluid={true}>
           <div className="section-title text-center mb-55">
-            <h2>Best sellers</h2>
-            <div>You have to try these!</div>
+            <h2>Most Popular </h2>
+            <div>Top rated coffee</div>
           </div>
           <Row>{renderBestSellers}</Row>
         </Container>

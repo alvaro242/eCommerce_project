@@ -16,6 +16,10 @@ export class Footer extends Component {
   }
 
   componentDidMount() {
+    /*
+
+  I'll better disable this for now as it overloads the API
+
     this.setState({ address: LoadingSkeleton() });
     this.setState({ email: LoadingSkeleton() });
     this.setState({ copyright: LoadingSkeleton() });
@@ -30,6 +34,7 @@ export class Footer extends Component {
       )
 
       .catch((error) => console.log(error));
+      */
   }
 
   render() {
@@ -39,34 +44,38 @@ export class Footer extends Component {
           <Container className="footerContainer">
             <Row className="px-0 my-5">
               <Col className="p-2" lg={3} md={3} sm={6} xs={12}>
-                <h5 className="footer-menu-title">Address</h5>
+                <h6 className="footer-menu-title">Address</h6>
                 <div>{this.state.address}</div>
               </Col>
 
               <Col className="p-2" lg={3} md={3} sm={6} xs={12}>
-                <h5 className="footer-menu-title">
+                <h6 className="footer-menu-title">
                   <Link
                     to="/contact"
                     style={{ textDecoration: "none", color: "black" }}
                   >
                     Contact me
                   </Link>
-                </h5>
+                </h6>
               </Col>
 
               <Col className="p-2" lg={3} md={3} sm={6} xs={12}>
-                <h5 className="footer-menu-title">
+                <h6 className="footer-menu-title">
                   <Link
                     to="/about"
                     style={{ textDecoration: "none", color: "black" }}
                   >
                     About
                   </Link>
-                </h5>
+                </h6>
               </Col>
             </Row>
           </Container>
-          <div className="footerText">{this.state.copyright}</div>
+          <div className="footerText">
+            2023 Alvaro Dominguez Mora. Final project for the course Software
+            Engineering in Manchester Metropolitan University
+            {/*this.state.copyright */}
+          </div>
         </div>
       </Fragment>
     );

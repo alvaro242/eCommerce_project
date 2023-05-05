@@ -145,9 +145,9 @@ class Product extends Component {
                   <h6 className="mt-2">Quantity</h6>
                   <div className="input-group mt-3">
                     <input className="form-control-sm  " type="number" />
-                    <button className="btn btn-primary m-1 ">
+                    <button className="btn btn-success m-1 ">
                       {" "}
-                      <i className="fa fa-shopping-cart "></i> Add To Cart
+                      <i className="fa fa-shopping-cart "></i> Buy
                     </button>
                   </div>
                 </Col>

@@ -14,7 +14,7 @@ import MyAccountPage from "../pages/myAccountPage";
 import { getUserData, getWebInfo } from "../components/api/api";
 import NavMenu from "../components/common/navMenu";
 
-export class AppRoute extends Component {
+export class Routes extends Component {
   constructor() {
     super();
 
@@ -93,4 +93,4 @@ export class AppRoute extends Component {
   }
 }
 
-export default AppRoute;
+export default Routes;

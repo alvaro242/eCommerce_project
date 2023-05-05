@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import banner2 from "../../assets/images/banner1.png";
 import banner1 from "../../assets/images/banner2.png";
 
-class SimpleSlider extends Component {
+class Carousel extends Component {
   render() {
     const sliderSettings = {
       dots: true,
@@ -30,4 +30,4 @@ class SimpleSlider extends Component {
   }
 }
 
-export default SimpleSlider;
+export default Carousel;

@@ -37,7 +37,7 @@ export class Login extends Component {
       .then((response) => {
         if (response.status === 200) {
           localStorage.setItem("token", response.data.token);
-          this.props.setUser(response.data);
+          this.props.setUser(response.data.user);
           this.setState({ loggedIn: true });
         } else {
           this.setState({

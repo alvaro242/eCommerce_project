@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 
 class ProductPage extends Component {
-  constructor({ match }) {
-    super();
+  constructor({ match, props }) {
+    super(props);
 
     this.state = {
       productid: match.params.productid,
@@ -16,6 +16,7 @@ class ProductPage extends Component {
       productCategory: "",
       productSubcategory: "",
       productName: "",
+      loggedIn: false,
     };
   }
 
@@ -38,7 +39,6 @@ class ProductPage extends Component {
 
   render() {
     const user = this.props.user;
-    console.log(user);
     return (
       <Fragment>
         <NavMenu />

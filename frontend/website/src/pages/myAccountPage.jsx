@@ -5,9 +5,14 @@ import Footer from "../components/common/footer";
 import MyAccountContent from "../components/other/myAccountContent";
 
 class MyAccountPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   componentDidMount() {
     window.scroll(0, 0);
-    console.log(this.props.user);
   }
   render() {
     const user = this.props.user;

@@ -12,11 +12,19 @@ class Product extends Component {
       name: "",
       grounded: 0, //bolean
       qty: 1,
-      feedbackMessage: <div></div>,
+      loggedIn: false,
+      user: "guest",
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const user = this.props.user;
+    console.log(user);
+
+    if (typeof user == "undefined") {
+      console.log("not logged in");
+    } else this.setState({ loggedIn: true, user: user });
+  }
 
   renderName(productDetails) {
     if (typeof productDetails != undefined && productDetails.length !== 0) {
@@ -66,22 +74,65 @@ class Product extends Component {
     let objectToServer = {};
     console.log(this.props.user);
 
-    if (localStorage.getItem("token")) {
+    let normalPrice = this.props.productDetails[0].price;
+    let discountedPrice = this.props.productDetails[0].offer_price;
+    let finalPrice = "";
+
+    if (this.state.loggedIn === true) {
+      console.log("this works, the email address is" + this.state.user.email);
       objectToServer = {
-        user: this.props.user.user.email,
+        user: this.state.user.email,
+        product_name: this.props.productDetails[0].name,
         sku: this.props.productDetails[0].sku,
         ground: this.state.grounded,
         qty: this.state.qty,
+        unit_price: normalPrice,
+        total_price: normalPrice * this.state.qty,
+        image_nobackground: this.props.productDetails[0].image_nobackground,
       };
-      console.log(objectToServer);
+
       addToBasket(objectToServer).then((response) => console.log(response));
     } else {
-      this.setState({
-        feedbackMessage: (
-          <div className="alert alert-danger p-2">Please log in first</div>
-        ),
-      });
-      console.log("not logged in!");
+      //calculate discounted price if exist
+      //calculate total price
+
+      if (discountedPrice !== "") {
+        finalPrice = discountedPrice;
+      } else {
+        finalPrice = normalPrice;
+      }
+
+      const objectToLocalStorage = {
+        user: "guest",
+        product_name: this.props.productDetails[0].name,
+        sku: this.props.productDetails[0].sku,
+        ground: this.state.grounded,
+        qty: this.state.qty,
+        unit_price: normalPrice,
+        total_price: normalPrice * this.state.qty,
+        image_nobackground: this.props.productDetails[0].image_nobackground,
+      };
+
+      var basketString = localStorage.getItem("basket");
+
+      if (basketString === null) {
+        const stringedObject = JSON.stringify(objectToLocalStorage);
+
+        localStorage.setItem("basket", "[" + stringedObject + "]");
+
+        console.log("stringedObject is " + stringedObject);
+      } else {
+        console.log("an item on it");
+        console.log(basketString);
+
+        const localbasket = JSON.parse(basketString);
+
+        localbasket.push(objectToLocalStorage);
+
+        const stringifiedLocalBasket = JSON.stringify(localbasket);
+
+        localStorage.setItem("basket", stringifiedLocalBasket);
+      }
     }
   };
 
@@ -199,8 +250,6 @@ class Product extends Component {
                       <i className="fa fa-shopping-cart "></i> Buy
                     </button>
                   </div>
-                  <p></p>
-                  {this.state.feedbackMessage}
                 </Col>
               </Row>
 

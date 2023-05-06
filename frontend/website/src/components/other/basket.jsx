@@ -3,6 +3,27 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import Product1 from "./../../assets/images/products/colombia2.png";
 
 class Basket extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loggedIn: false,
+      user: "guest",
+    };
+  }
+
+  componentDidMount() {
+    const user = this.props.user;
+    console.log(user);
+
+    if (typeof user == "undefined") {
+      console.log("not logged in");
+    } else {
+      this.setState({ loggedIn: true, user: user });
+      console.log("logged in");
+    }
+  }
+
   render() {
     return (
       <Fragment>

@@ -19,7 +19,7 @@ export class Routes extends Component {
     super();
 
     this.state = {
-      user: {},
+      user: { name: "", email: "" },
     };
   }
 
@@ -33,6 +33,9 @@ export class Routes extends Component {
     this.setState({ user: user });
   };
   render() {
+    {
+      console.log(this.state.user);
+    }
     return (
       <Fragment>
         <NavMenu user={this.state.user} setUser={this.setUser} />
@@ -75,7 +78,19 @@ export class Routes extends Component {
               />
             )}
           />
-          <Route exact path="/basket" component={BasketPage}></Route>
+          <Route
+            exact
+            path="/basket"
+            render={(props) => (
+              <BasketPage
+                user={this.state.user}
+                setUser={this.setUser}
+                {...props}
+                key={Date.now()}
+              />
+            )}
+          />
+
           <Route exact path="/about" component={AboutPage}></Route>
           <Route exact path="/categories/:category" component={CategoryPage} />
           <Route

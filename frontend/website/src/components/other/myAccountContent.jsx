@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from "react";
 
 class MyAccountContent extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    const user = this.props.user.user;
+    const user = this.props.user;
     let name = user.name;
     let email = user.email;
-
-    console.log(user);
 
     return (
       <Fragment>

@@ -8,7 +8,7 @@ import Carousel from "../components/home/carousel";
 import "../assets/css/home.css";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
-import { postVisitorDetails } from "../components/api/api";
+
 import { getAllCategories } from "../components/api/api";
 import LoadingSkeleton from "../components/other/skeleton";
 
@@ -39,7 +39,6 @@ export class homePage extends Component {
   }
 
   componentWillUnmount() {
-    postVisitorDetails();
     //it will only exec once
   }
 

@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Navbar, Container, Row, Col, Button } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
-import gimmeBeansLogo from "../../assets/logo.png";
+import gimmeBeansLogo from "../../assets/logo_reduced.png";
 
 export class NavMenu extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ export class NavMenu extends Component {
   }
 
   redirectIfSearch() {
-    if (this.state.redirect == true) {
+    if (this.state.redirect === true) {
       return <Redirect to={"/search=" + this.state.searchInput}></Redirect>;
     }
   }
@@ -38,7 +38,7 @@ export class NavMenu extends Component {
 
   triggerSearch = (event) => {
     console.log(event);
-    if (event.keyCode == 13) {
+    if (event.keyCode === 13) {
       this.handleSearch();
     }
   };
@@ -84,7 +84,8 @@ export class NavMenu extends Component {
             <Row className="bg-white ">
               <Col className="px-2" lg={5} md={5} sm={3} xs={3}>
                 <Link to="/" className="px-5">
-                  <img src="https://www.iconexperience.com/_img/o_collection_png/office/64x64/plain/coffee_bean.png" />
+                  <img src={gimmeBeansLogo} />
+                  {/* sample icon: "https://www.iconexperience.com/_img/o_collection_png/office/64x64/plain/coffee_bean.png"*/}
                 </Link>
               </Col>
 

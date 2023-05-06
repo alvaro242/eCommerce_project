@@ -25,8 +25,8 @@ export class Routes extends Component {
 
   componentDidMount() {
     getUserData()
-      .then((response) => console.log(response) & this.setUser(response.data))
-      .catch((error) => error);
+      .then((response) => this.setUser(response.data))
+      .catch((error) => this.setUser("unlogged"));
   }
 
   setUser = (user) => {
@@ -54,8 +54,27 @@ export class Routes extends Component {
           <Route
             exact
             path="/product/:productid"
-            component={ProductPage}
-          ></Route>
+            render={(props) => (
+              <ProductPage
+                user={this.state.user}
+                setUser={this.setUser}
+                {...props}
+                key={Date.now()}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/account"
+            render={(props) => (
+              <MyAccountPage
+                user={this.state.user}
+                setUser={this.setUser}
+                {...props}
+                key={Date.now()}
+              />
+            )}
+          />
           <Route exact path="/basket" component={BasketPage}></Route>
           <Route exact path="/about" component={AboutPage}></Route>
           <Route exact path="/categories/:category" component={CategoryPage} />
@@ -72,19 +91,6 @@ export class Routes extends Component {
             path="/search=:searchInput"
             render={(props) => (
               <SearchResultsPage {...props} key={Date.now()} />
-            )}
-          />
-
-          <Route
-            exact
-            path="/account"
-            render={(props) => (
-              <MyAccountPage
-                user={this.state.user}
-                setUser={this.setUser}
-                {...props}
-                key={Date.now()}
-              />
             )}
           />
         </Switch>

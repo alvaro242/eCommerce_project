@@ -37,6 +37,8 @@ class ProductPage extends Component {
   }
 
   render() {
+    const user = this.props.user;
+    console.log(user);
     return (
       <Fragment>
         <NavMenu />
@@ -63,7 +65,7 @@ class ProductPage extends Component {
             {this.state.productSubcategory}
           </Link>
         </Container>
-        <Product productDetails={this.state.productDetails} />
+        <Product productDetails={this.state.productDetails} user={user} />
         <Footer />
       </Fragment>
     );

@@ -9,12 +9,6 @@ export function getServerURL() {
 axios.defaults.headers.common["Authorization"] =
   "Bearer " + localStorage.getItem("token");
 
-export function postVisitorDetails() {
-  let url = getServerURL() + "api/visitor";
-
-  axios.post(url);
-}
-
 export async function getWebInfo() {
   let url = getServerURL() + "api/webinfo";
 
@@ -176,6 +170,19 @@ export async function getUserData() {
 
   return axios
     .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export async function addToBasket(data) {
+  let url = getServerURL() + "api/addtobasket";
+
+  return axios
+    .post(url, data)
     .then((response) => {
       return response;
     })

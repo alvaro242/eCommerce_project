@@ -202,6 +202,28 @@ class Product extends Component {
     return parseHTML;
   }
 
+  renderBuyButton(productDetails) {
+    if (typeof productDetails != "undefined" && productDetails.length !== 0) {
+      if (productDetails[0].stock < this.state.qty) {
+        return (
+          <button className="btn btn-secondary m-1 ">
+            {" "}
+            <i className="fa fa-shopping-cart "></i> No stock
+          </button>
+        );
+      } else
+        return (
+          <button
+            className="btn btn-success m-1 "
+            onClick={this.handleAddToBasket.bind(this)}
+          >
+            {" "}
+            <i className="fa fa-shopping-cart "></i> Buy
+          </button>
+        );
+    }
+  }
+
   render() {
     const productDetails = this.props.productDetails;
 
@@ -242,13 +264,7 @@ class Product extends Component {
                       min={1}
                       max={99}
                     />
-                    <button
-                      className="btn btn-success m-1 "
-                      onClick={this.handleAddToBasket.bind(this)}
-                    >
-                      {" "}
-                      <i className="fa fa-shopping-cart "></i> Buy
-                    </button>
+                    {this.renderBuyButton(productDetails)}
                   </div>
                 </Col>
               </Row>

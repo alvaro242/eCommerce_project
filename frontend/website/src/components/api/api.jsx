@@ -190,3 +190,16 @@ export async function addToBasket(data) {
       return error;
     });
 }
+
+export async function getBasket() {
+  let url = getServerURL() + "api/basket";
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}

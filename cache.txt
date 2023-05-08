@@ -4,9 +4,10 @@ clear  routes
 
 
 export PHP_PATH=/usr/local/bin/php8.1
-artisan cache:clear 
-artisan route:clear
-artisan config:clear
-artisan view:clear
-artisan cache:forget key
+/usr/bin/php8.1 composer.phar dump-autoload
+/usr/bin/php8.1 artisan cache:clear 
+/usr/bin/php8.1 artisan route:clear
+/usr/bin/php8.1 artisan config:clear
+/usr/bin/php8.1 artisan view:clear
+/usr/bin/php8.1 artisan cache:forget key
 

@@ -165,19 +165,6 @@ export async function signUp(data) {
     });
 }
 
-export async function getUserData() {
-  let url = getServerURL() + "api/user";
-
-  return axios
-    .get(url)
-    .then((response) => {
-      return response;
-    })
-    .catch((error) => {
-      return error;
-    });
-}
-
 export async function addToBasket(data) {
   let url = getServerURL() + "api/addtobasket";
 
@@ -191,11 +178,37 @@ export async function addToBasket(data) {
     });
 }
 
+export async function getUserData() {
+  let url = getServerURL() + "api/user";
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
 export async function getBasket() {
   let url = getServerURL() + "api/basket";
 
   return axios
     .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export async function deleteFromBasket(id) {
+  let url = getServerURL() + "api/removebasket=" + id;
+
+  return axios
+    .delete(url)
     .then((response) => {
       return response;
     })

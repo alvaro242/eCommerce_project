@@ -13,6 +13,7 @@ import SearchResultsPage from "../pages/searchResultsPage";
 import MyAccountPage from "../pages/myAccountPage";
 import { getUserData, getWebInfo } from "../components/api/api";
 import NavMenu from "../components/common/navMenu";
+import CheckoutPage from "../pages/checkoutPage";
 
 export class Routes extends Component {
   constructor() {
@@ -106,6 +107,18 @@ export class Routes extends Component {
             path="/search=:searchInput"
             render={(props) => (
               <SearchResultsPage {...props} key={Date.now()} />
+            )}
+          />
+
+          <Route
+            exact
+            path="/checkout"
+            render={(props) => (
+              <CheckoutPage
+                user={this.state.user}
+                {...props}
+                key={Date.now()}
+              />
             )}
           />
         </Switch>

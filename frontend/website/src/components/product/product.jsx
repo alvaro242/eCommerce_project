@@ -14,6 +14,7 @@ class Product extends Component {
       qty: 1,
       loggedIn: false,
       user: "guest",
+      feedbackAddToBasket: <div></div>,
     };
   }
 
@@ -76,7 +77,19 @@ class Product extends Component {
 
     let normalPrice = this.props.productDetails[0].price;
     let discountedPrice = this.props.productDetails[0].offer_price;
-    let finalPrice = "";
+    let priceAfterDiscount = "0";
+
+    if (discountedPrice) {
+      priceAfterDiscount = discountedPrice;
+    } else {
+      priceAfterDiscount = normalPrice;
+    }
+
+    let totalPrice =
+      priceAfterDiscount * this.state.qty +
+      this.state.grounded * this.state.qty;
+
+    console.log("total price is " + totalPrice);
 
     if (this.state.loggedIn === true) {
       console.log("this works, the email address is" + this.state.user.email);
@@ -86,30 +99,43 @@ class Product extends Component {
         sku: this.props.productDetails[0].sku,
         ground: this.state.grounded,
         qty: this.state.qty,
-        unit_price: normalPrice,
-        total_price: normalPrice * this.state.qty,
+        unit_price: priceAfterDiscount,
+        total_price: totalPrice,
         image_nobackground: this.props.productDetails[0].image_nobackground,
       };
 
-      addToBasket(objectToServer).then((response) => console.log(response));
+      console.log(
+        priceAfterDiscount,
+        this.state.qty,
+        this.state.grounded,
+        this.state.qty
+      );
+      console.log(
+        priceAfterDiscount * this.state.qty +
+          this.state.grounded * this.state.qty
+      );
+
+      addToBasket(objectToServer).then((response) =>
+        this.setState({
+          feedbackAddToBasket: (
+            <div className="alert alert-success">Added to the basket</div>
+          ),
+        })
+      );
     } else {
       //calculate discounted price if exist
       //calculate total price
 
-      if (discountedPrice !== "") {
-        finalPrice = discountedPrice;
-      } else {
-        finalPrice = normalPrice;
-      }
+      let objectToLocalStorage = {};
 
-      const objectToLocalStorage = {
+      objectToLocalStorage = {
         user: "guest",
         product_name: this.props.productDetails[0].name,
         sku: this.props.productDetails[0].sku,
         ground: this.state.grounded,
         qty: this.state.qty,
-        unit_price: normalPrice,
-        total_price: normalPrice * this.state.qty,
+        unit_price: priceAfterDiscount,
+        total_price: totalPrice,
         image_nobackground: this.props.productDetails[0].image_nobackground,
       };
 
@@ -119,6 +145,12 @@ class Product extends Component {
         const stringedObject = JSON.stringify(objectToLocalStorage);
 
         localStorage.setItem("basket", "[" + stringedObject + "]");
+
+        this.setState({
+          feedbackAddToBasket: (
+            <div className="alert alert-success">Added to the basket</div>
+          ),
+        });
 
         console.log("stringedObject is " + stringedObject);
       } else {
@@ -132,6 +164,12 @@ class Product extends Component {
         const stringifiedLocalBasket = JSON.stringify(localbasket);
 
         localStorage.setItem("basket", stringifiedLocalBasket);
+
+        this.setState({
+          feedbackAddToBasket: (
+            <div className="alert alert-success">Added to the basket</div>
+          ),
+        });
       }
     }
   };
@@ -167,7 +205,7 @@ class Product extends Component {
                     type="radio"
                     name="ground"
                     id="groundyes"
-                    value="1"
+                    value="2"
                   />
                   <label className="form-check-label" htmlFor="exampleRadios1">
                     Grounded (+£2.00)
@@ -265,6 +303,7 @@ class Product extends Component {
                       max={99}
                     />
                     {this.renderBuyButton(productDetails)}
+                    {this.state.feedbackAddToBasket}
                   </div>
                 </Col>
               </Row>

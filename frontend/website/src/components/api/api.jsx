@@ -229,3 +229,16 @@ export async function newOrder(data) {
       return error;
     });
 }
+
+export async function payment(data) {
+  let url = getServerURL() + "api/payment";
+
+  return axios
+    .post(url, data)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}

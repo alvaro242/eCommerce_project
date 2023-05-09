@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { getBasket, newOrder } from "../api/api";
+import { Redirect } from "react-router-dom";
 
 class Checkout extends Component {
   constructor(props) {
@@ -52,16 +53,36 @@ class Checkout extends Component {
       total: this.state.TotalToPay,
       tax_percentage: "20",
       payment_method: "card",
+      orderRef: "",
+      refirect: false,
     };
 
     console.log(objectToServer);
 
     newOrder(objectToServer)
       .then(
-        (response) => console.log(response.data) //Order created with status unpaid, redirect to payment
+        (response) => {
+          this.setState({ orderRef: response.data, redirect: true });
+        } //Order created with status unpaid, redirect to payment
       )
       .catch((error) => console.log(error));
   };
+
+  redirect() {
+    if (this.state.redirect === true) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/payment",
+            state: {
+              orderRef: this.state.orderRef,
+              amount: this.state.TotalToPay,
+            },
+          }}
+        />
+      );
+    }
+  }
 
   render() {
     if (this.state.loggedIn === false) {
@@ -79,6 +100,7 @@ class Checkout extends Component {
     }
     return (
       <Fragment>
+        {this.redirect()}
         <Container>
           <center>
             <Form className="formContainer" onSubmit={this.handlesubmit}>

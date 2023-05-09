@@ -14,6 +14,7 @@ import MyAccountPage from "../pages/myAccountPage";
 import { getUserData } from "../components/api/api";
 import NavMenu from "../components/common/navMenu";
 import CheckoutPage from "../pages/checkoutPage";
+import PaymentPage from "../pages/PaymentPage";
 
 export class Routes extends Component {
   constructor() {
@@ -117,6 +118,11 @@ export class Routes extends Component {
                 key={Date.now()}
               />
             )}
+          />
+          <Route
+            exact
+            path="/payment"
+            render={(props) => <PaymentPage {...props} key={Date.now()} />}
           />
         </Switch>
       </Fragment>

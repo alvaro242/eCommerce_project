@@ -8,12 +8,33 @@ class MyAccountPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      paymentReceived: false,
+      orderRef: "",
+      amount: "",
+    };
   }
 
   componentDidMount() {
     window.scroll(0, 0);
+
+    this.test();
   }
+
+  test() {
+    try {
+      if (this.props.location.state.orderPaid === true) {
+        this.setState({
+          paymentReceived: true,
+          orderRef: this.props.location.state.orderRef,
+          amount: this.props.location.state.amount,
+        });
+      }
+    } catch {
+      console.log("no order");
+    }
+  }
+
   render() {
     const user = this.props.user;
 
@@ -21,7 +42,12 @@ class MyAccountPage extends Component {
       <Fragment>
         <Container>
           <NavMenu />
-          <MyAccountContent user={user} />
+          <MyAccountContent
+            user={user}
+            paymentReceived={this.state.paymentReceived}
+            amount={this.state.amount}
+            orderRef={this.state.orderRef}
+          />
         </Container>
         <Footer />
       </Fragment>

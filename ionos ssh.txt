@@ -4,3 +4,11 @@ u110735659
 
 /usr/bin/php8.1 artisan route:cache
 /usr/bin/php8.1 artisan l5-swagger:generate
+
+public key 
+
+pk_test_51N5Yg0EaqkldoehUBgLKe3pduPT6DJKpWJmtg0O5TirN5S89EcDxKLyWKpdD0AKwV55Sovcnl23HjARRHYKsaDY300RRihTiQk
+
+private key
+
+sk_test_51N5Yg0EaqkldoehUio2CwYxkByDZsHaxA6hBEAAX4J6M9uZaI1eoh3BWFl1rtRpRDV5mIWS4XRy4WOCl6mOnFVs100UK5kLFE4

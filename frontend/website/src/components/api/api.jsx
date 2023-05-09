@@ -216,3 +216,16 @@ export async function deleteFromBasket(id) {
       return error;
     });
 }
+
+export async function newOrder(data) {
+  let url = getServerURL() + "api/neworder";
+
+  return axios
+    .post(url, data)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}

@@ -11,7 +11,7 @@ import SubcategoryPage from "../pages/subcategoryPage";
 import AllCategoriesPage from "../pages/allCategoriesPage";
 import SearchResultsPage from "../pages/searchResultsPage";
 import MyAccountPage from "../pages/myAccountPage";
-import { getUserData, getWebInfo } from "../components/api/api";
+import { getUserData } from "../components/api/api";
 import NavMenu from "../components/common/navMenu";
 import CheckoutPage from "../pages/checkoutPage";
 
@@ -34,9 +34,6 @@ export class Routes extends Component {
     this.setState({ user: user });
   };
   render() {
-    {
-      console.log(this.state.user);
-    }
     return (
       <Fragment>
         <NavMenu user={this.state.user} setUser={this.setUser} />

@@ -16,6 +16,7 @@ class Basket extends Component {
       refresh: false,
       feedbackEmpty: <div></div>,
       feedbackCheckoutButton: <div></div>,
+      subtotal: "Loading...",
     };
   }
 
@@ -46,9 +47,23 @@ class Basket extends Component {
       this.setState({ loggedIn: true, user: user });
       console.log("logged in");
       getBasket()
-        .then((response) => this.setState({ basket: response.data }))
+        .then(
+          (response) =>
+            this.setState({ basket: response.data }) &
+            this.setTotalToPay(response.data)
+        )
         .catch((error) => console.log(error));
     }
+  }
+
+  setTotalToPay(arrayOfItems) {
+    console.log(arrayOfItems);
+    let counter = 0;
+    arrayOfItems.forEach((element) => {
+      counter = counter + parseFloat(element.total_price);
+    });
+
+    this.setState({ subtotal: "Subtotal: " + counter });
   }
 
   renderGrounded(groundOption) {
@@ -159,7 +174,8 @@ class Basket extends Component {
           <Row>
             <Col md={12} lg={12} sm={12} xs={12} className="text-center p-2">
               {" "}
-              Total to pay: <br />
+              {this.state.subtotal}
+              <br />
               <Link to="/checkout">
                 <Button className="p-2">Checkout</Button>
               </Link>

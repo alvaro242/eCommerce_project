@@ -4,7 +4,7 @@ import CoffeeCategories from "../components/home/coffeeCategories";
 import NewArrivals from "../components/home/newArrivals";
 
 import { Container } from "react-bootstrap";
-import Carousel from "../components/home/carousel";
+import PWAPrompt from "react-ios-pwa-prompt";
 import "../assets/css/home.css";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
@@ -62,6 +62,12 @@ export class homePage extends Component {
 
           <NewArrivals />
         </Container>
+        <PWAPrompt
+          promptOnVisit={1}
+          timesToShow={3}
+          copyClosePrompt="Close"
+          permanentlyHideOnDismiss={false}
+        />
         <Footer />
       </Fragment>
     );

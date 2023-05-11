@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../src/assets/css/animate.min.css";
 import "font-awesome/css/font-awesome.min.css";
 
-document.body.style = "background: #f3dfb1;";
+//document.body.style = "background: #f3dfb1;";
 
 //document.body.style = "background: #F3DFB1;";
 

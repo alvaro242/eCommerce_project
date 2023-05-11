@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function getServerURL() {
-  let serverURL = "http://127.0.0.1:8000/";
+  let serverURL = "https://server.alvarodominguezmora.com/";
 
   return serverURL;
 }

@@ -88,7 +88,7 @@ export class Login extends Component {
 
   render() {
     if (this.state.loggedIn === true) {
-      return <Redirect to={"/account"} />;
+      return <Redirect to={"/"} />;
     }
     return (
       <Fragment>

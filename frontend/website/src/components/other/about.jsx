@@ -50,6 +50,13 @@ class About extends Component {
                       <h4>About me</h4>
 
                       <div>{this.state.about}</div>
+
+                      <a
+                        href="https://www.flaticon.com/free-icons/coffee"
+                        title="coffee icons"
+                      >
+                        Coffee icons created by Freepik - Flaticon
+                      </a>
                     </Col>
                   </Row>
                 </Container>

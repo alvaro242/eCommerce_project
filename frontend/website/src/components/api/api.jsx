@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function getServerURL() {
-  let serverURL = "https://server.alvarodominguezmora.com/";
+  let serverURL = "http://127.0.0.1:8000/";
 
   return serverURL;
 }
@@ -235,6 +235,33 @@ export async function payment(data) {
 
   return axios
     .post(url, data)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export async function myOrders() {
+  let url = getServerURL() + "api/myorders";
+
+  return axios
+    .get(url)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export async function getProductsFromOrder(id) {
+  //requires token
+  let url = getServerURL() + "api/order=" + id;
+
+  return axios
+    .get(url)
     .then((response) => {
       return response;
     })

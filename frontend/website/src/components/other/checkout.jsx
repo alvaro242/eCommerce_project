@@ -40,7 +40,9 @@ class Checkout extends Component {
       counter = counter + parseFloat(element.total_price);
     });
 
-    this.setState({ TotalToPay: counter });
+    let counterTwoDigitsOnly = counter.toFixed(2);
+
+    this.setState({ TotalToPay: counterTwoDigitsOnly });
   }
 
   handlesubmit = (e) => {

@@ -15,6 +15,7 @@ import { getUserData } from "../components/api/api";
 import NavMenu from "../components/common/navMenu";
 import CheckoutPage from "../pages/checkoutPage";
 import PaymentPage from "../pages/PaymentPage";
+import OrderPage from "../pages/orderPage";
 
 export class Routes extends Component {
   constructor() {
@@ -123,6 +124,11 @@ export class Routes extends Component {
             exact
             path="/payment"
             render={(props) => <PaymentPage {...props} key={Date.now()} />}
+          />
+          <Route
+            exact
+            path="/order/:id"
+            render={(props) => <OrderPage {...props} key={Date.now()} />}
           />
         </Switch>
       </Fragment>

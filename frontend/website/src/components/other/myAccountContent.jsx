@@ -1,4 +1,7 @@
 import React, { Component, Fragment } from "react";
+import { Table } from "react-bootstrap";
+import { myOrders } from "../api/api";
+import { Link } from "react-router-dom";
 
 class MyAccountContent extends Component {
   constructor(props) {
@@ -7,10 +10,83 @@ class MyAccountContent extends Component {
       paymentReceived: false,
       orderRef: "",
       amountPaid: "",
+      orders: "",
+      isLoading: true,
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.getMyOrders();
+  }
+
+  getMyOrders() {
+    myOrders()
+      .then((response) =>
+        this.setState({ orders: response.data, isLoading: false })
+      )
+      .catch((error) => console.log(error));
+  }
+
+  renderContentTable() {
+    console.log(this.state.orders);
+
+    let inversedOrders = this.state.orders.reverse();
+
+    const renderOrders = inversedOrders.map((item, index) => {
+      return (
+        <tr key={index}>
+          <th scope="row">{item.id}</th>
+          <td>{item.updated_at}</td>
+          <td>{item.total}</td>
+          <td>{item.status}</td>
+          <td>{item.payment_method}</td>
+
+          <td>
+            <Link
+              style={{ color: "black" }}
+              to={{
+                pathname: "/order/" + item.id,
+                state: {
+                  orderRef: item.id,
+                  delivery_address: item.delivery_address,
+                  billing_address: item.billing_address,
+                  subtotal: item.subtotal,
+                  tax_percentage: item.tax_percentage,
+                  total: item.total,
+                },
+              }}
+            >
+              View
+            </Link>
+          </td>
+        </tr>
+      );
+    });
+
+    return renderOrders;
+  }
+
+  renderOrders() {
+    if (this.state.isLoading === true) {
+      return "Loading...";
+    } else {
+      return (
+        <Table className="table" striped bordered hover>
+          <thead>
+            <tr>
+              <th scope="col">Order number</th>
+              <th scope="col">Date</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Status</th>
+              <th scope="col">Payment method</th>
+              <th scope="col">View</th>
+            </tr>
+          </thead>
+          <tbody>{this.renderContentTable()}</tbody>
+        </Table>
+      );
+    }
+  }
 
   renderPaymentReceived() {
     try {
@@ -44,6 +120,7 @@ class MyAccountContent extends Component {
         <p className="p-4"></p>
         {this.renderPaymentReceived()}
         My orders:
+        {this.renderOrders()}
       </Fragment>
     );
   }

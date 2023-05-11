@@ -63,7 +63,8 @@ class Basket extends Component {
       counter = counter + parseFloat(element.total_price);
     });
 
-    this.setState({ subtotal: "Subtotal: " + counter });
+    let counterTwoDigits = counter.toFixed(2);
+    this.setState({ subtotal: "Subtotal: " + counterTwoDigits });
   }
 
   renderGrounded(groundOption) {

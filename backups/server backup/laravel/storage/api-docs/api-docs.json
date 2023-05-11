@@ -1,0 +1,269 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API documentation",
+        "version": "1.0"
+    },
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "send login details, receive token"
+                    }
+                }
+            }
+        },
+        "/signup": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "send signup details, received 200 for success 400 for error"
+                    }
+                }
+            }
+        },
+        "/payment": {
+            "post": {
+                "tags": [
+                    "Stripe"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Requires exp_month, exp_year,cvc, amount, description"
+                    },
+                    "500": {
+                        "description": "Incorrect card details",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "error": "Incorrect card details"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "Authentification"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "requires token. Receive user info"
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain categories"
+                    }
+                }
+            }
+        },
+        "/neworder": {
+            "post": {
+                "tags": [
+                    "checkout"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Requires delivery_address, billing_address, subtotal, total, status, tax_percentage, payment_method"
+                    }
+                }
+            }
+        },
+        "/myorders": {
+            "get": {
+                "tags": [
+                    "orders"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns orders from logged in user"
+                    }
+                }
+            }
+        },
+        "/order={orderRef}": {
+            "get": {
+                "tags": [
+                    "orders"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain products from order if owner. Requires token"
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain products"
+                    }
+                }
+            }
+        },
+        "/products/category={category}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain products by category"
+                    }
+                }
+            }
+        },
+        "/products/subcategory={subcategory}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain products by subcategory"
+                    }
+                }
+            }
+        },
+        "/products/feature={feature}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain products by extra feature"
+                    }
+                }
+            }
+        },
+        "/products/id={productid}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain products by product ID"
+                    }
+                }
+            }
+        },
+        "/products/search={input}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain products by search input"
+                    }
+                }
+            }
+        },
+        "/addtobasket": {
+            "post": {
+                "tags": [
+                    "basket"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "send the following elemets to api: user, sku, qty, ground(0/1)"
+                    }
+                }
+            }
+        },
+        "/getbasket": {
+            "get": {
+                "tags": [
+                    "basket"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Requires token. Return items in basket for the logged in user"
+                    }
+                }
+            }
+        },
+        "/removebasket={id}": {
+            "delete": {
+                "tags": [
+                    "basket"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Requires token. 1 if item deleted from basket"
+                    }
+                }
+            }
+        },
+        "/subcategories": {
+            "get": {
+                "tags": [
+                    "subcategories"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain subcategories"
+                    }
+                }
+            }
+        },
+        "/subcategories/{categoryname}": {
+            "get": {
+                "tags": [
+                    "subcategories"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain subcategories"
+                    }
+                }
+            }
+        },
+        "/webinfo": {
+            "get": {
+                "tags": [
+                    "webinfo"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Obtain web info"
+                    }
+                }
+            }
+        },
+        "/projects": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of projects."
+                    }
+                }
+            }
+        }
+    }
+}

@@ -2,10 +2,7 @@ import React, { Component, Fragment } from "react";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 import { payment } from "../components/api/api";
-import {
-  Redirect,
-  useHistory,
-} from "react-router-dom/cjs/react-router-dom.min";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 class PaymentPage extends Component {
   constructor(props) {

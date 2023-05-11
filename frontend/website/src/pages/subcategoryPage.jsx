@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from "react";
-import Categories from "../components/home/coffeeCategories";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
-import { getAllCategories } from "../components/api/api";
 import { Container } from "react-bootstrap";
 import { getProductsBySubcategory } from "../components/api/api";
 import SubcategoryContent from "../components/product/subcategoryContent";

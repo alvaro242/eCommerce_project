@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Col, Container, Row, Card, Button } from "react-bootstrap";
+import { Col, Container, Row, Card } from "react-bootstrap";
 import "./../../assets/css/card.css";
 import { getProductsByFeatureTopSellers, getServerURL } from "../api/api";
 import { Link } from "react-router-dom";
@@ -38,6 +38,7 @@ class TopSellerProducts extends Component {
             >
               <Card className="card ">
                 <img
+                  alt="product"
                   className="center"
                   src={getServerURL() + product.image_nobackground}
                 />
@@ -60,6 +61,7 @@ class TopSellerProducts extends Component {
             >
               <Card className="card ">
                 <img
+                  alt="product"
                   className="center"
                   src={getServerURL() + product.image_nobackground}
                 />

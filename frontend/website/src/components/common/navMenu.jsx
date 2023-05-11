@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Navbar, Container, Row, Col, Button } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
-import gimmeBeansLogo from "../../assets/coffee-cupLogo.png";
+import gimmeBeansLogo from "../../assets/logo.png";
 
 export class NavMenu extends Component {
   constructor(props) {

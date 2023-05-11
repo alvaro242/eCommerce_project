@@ -25,6 +25,7 @@ export class SubcategoryContent extends Component {
             >
               <Card className="card ">
                 <img
+                  alt="product"
                   className="center"
                   src={getServerURL() + product.image_nobackground}
                 />
@@ -47,6 +48,7 @@ export class SubcategoryContent extends Component {
             >
               <Card className="card ">
                 <img
+                  alt="product"
                   className="center"
                   src={getServerURL() + product.image_nobackground}
                 />

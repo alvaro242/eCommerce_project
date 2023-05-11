@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
-import Contact from "../components/other/contact";
+import Thanks from "../components/other/thanks";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 
-class ContactPage extends Component {
+class thanksPage extends Component {
   componentDidMount() {
     window.scroll(0, 0);
   }
@@ -11,11 +11,11 @@ class ContactPage extends Component {
     return (
       <Fragment>
         <NavMenu />
-        <Contact />
+        <Thanks />
         <Footer />
       </Fragment>
     );
   }
 }
 
-export default ContactPage;
+export default thanksPage;

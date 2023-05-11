@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Footer from "../components/common/footer";
 import NavMenu from "../components/common/navMenu";
 import { getProductsByInput } from "../components/api/api";

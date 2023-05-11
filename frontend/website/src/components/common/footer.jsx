@@ -11,31 +11,10 @@ export class Footer extends Component {
     this.state = {
       address: "",
       email: "",
-      copyright: "",
     };
   }
 
-  componentDidMount() {
-    /*
-
-  I'll better disable this for now as it overloads the API
-
-    this.setState({ address: LoadingSkeleton() });
-    this.setState({ email: LoadingSkeleton() });
-    this.setState({ copyright: LoadingSkeleton() });
-
-    getWebInfo()
-      .then((response) =>
-        this.setState({
-          address: response.data[0].address,
-          email: response.data[0].email,
-          copyright: response.data[0].copyright,
-        })
-      )
-
-      .catch((error) => console.log(error));
-      */
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -44,17 +23,12 @@ export class Footer extends Component {
           <Container className="footerContainer">
             <Row className="px-0 my-5">
               <Col className="p-2" lg={3} md={3} sm={6} xs={12}>
-                <h6 className="footer-menu-title">Address</h6>
-                <div>{this.state.address}</div>
-              </Col>
-
-              <Col className="p-2" lg={3} md={3} sm={6} xs={12}>
                 <h6 className="footer-menu-title">
                   <Link
-                    to="/contact"
+                    to="/thanks"
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    Contact me
+                    Special Thanks
                   </Link>
                 </h6>
               </Col>
@@ -74,7 +48,6 @@ export class Footer extends Component {
           <div className="footerText">
             2023 Alvaro Dominguez Mora. Final project for the course Software
             Engineering in Manchester Metropolitan University
-            {/*this.state.copyright */}
           </div>
         </div>
       </Fragment>

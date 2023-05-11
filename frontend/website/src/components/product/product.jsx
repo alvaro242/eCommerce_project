@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import Product1 from "./../../assets/images/products/colombia2.png";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import { getServerURL, addToBasket } from "../api/api";
 import ReactHtmlParser from "react-html-parser";
 
@@ -28,32 +27,38 @@ class Product extends Component {
   }
 
   renderName(productDetails) {
-    if (typeof productDetails != undefined && productDetails.length !== 0) {
+    if (typeof productDetails !== "undefined" && productDetails.length !== 0) {
       return productDetails[0].name;
     }
   }
 
   renderPic(productDetails) {
-    if (typeof productDetails != undefined && productDetails.length !== 0) {
+    if (typeof productDetails !== "undefined" && productDetails.length !== 0) {
       return getServerURL() + productDetails[0].image_1;
     }
   }
 
   rendersku(productDetails) {
-    if (typeof productDetails != undefined && productDetails.length !== 0) {
+    if (typeof productDetails !== "undefined" && productDetails.length !== 0) {
       return productDetails[0].sku;
     }
   }
 
   renderBrand(productDetails) {
-    if (typeof productDetails != undefined && productDetails.length !== 0) {
+    if (typeof productDetails !== "undefined" && productDetails.length !== 0) {
       return productDetails[0].brand;
     }
   }
 
   renderDescription(productDetails) {
-    if (typeof productDetails != undefined && productDetails.length !== 0) {
+    if (typeof productDetails !== "undefined" && productDetails.length !== 0) {
       return productDetails[0].description;
+    }
+  }
+
+  renderStock(productDetails) {
+    if (typeof productDetails !== "undefined" && productDetails.length !== 0) {
+      return productDetails[0].stock;
     }
   }
 
@@ -176,8 +181,8 @@ class Product extends Component {
 
   renderOptions(productDetails) {
     // if category is coffee then show grind options
-    if (typeof productDetails != undefined && productDetails.length !== 0) {
-      if (productDetails[0].category == "Coffee") {
+    if (typeof productDetails != "undefined" && productDetails.length !== 0) {
+      if (productDetails[0].category === "Coffee") {
         return (
           <Fragment>
             <Form>
@@ -220,8 +225,8 @@ class Product extends Component {
   }
 
   renderPrice(productDetails) {
-    if (typeof productDetails != undefined && productDetails.length !== 0) {
-      if (productDetails[0].offer_price == "") {
+    if (typeof productDetails != "undefined" && productDetails.length !== 0) {
+      if (productDetails[0].offer_price === "") {
         return <p className=" h3">£{productDetails[0].price}</p>;
       } else {
         return (
@@ -278,7 +283,11 @@ class Product extends Component {
             >
               <Row>
                 <Col md={6} lg={6} sm={12} xs={12}>
-                  <img className="w-100" src={this.renderPic(productDetails)} />
+                  <img
+                    className="w-100"
+                    alt="product"
+                    src={this.renderPic(productDetails)}
+                  />
                 </Col>
                 <Col className="p-3 " md={6} lg={6} sm={12} xs={12}>
                   <h5 className="Product-Name">
@@ -286,7 +295,8 @@ class Product extends Component {
                   </h5>
                   <p className="h7 text-secondary">
                     SKU: {this.rendersku(productDetails)} | Brand:{" "}
-                    {this.renderBrand(productDetails)}
+                    {this.renderBrand(productDetails)} | Stock:{" "}
+                    {this.renderStock(productDetails)}
                   </p>{" "}
                   {this.renderPrice(productDetails)}
                   {this.renderOptions(productDetails)}

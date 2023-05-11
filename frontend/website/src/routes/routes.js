@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import homePage from "../pages/homePage";
 import LoginPage from "../pages/loginPage";
-import ContactPage from "../pages/contactPage";
+import thanksPage from "../pages/thanksPage";
 import ProductPage from "../pages/productPage";
 import BasketPage from "../pages/basketPage";
 import AboutPage from "../pages/aboutPage";
@@ -53,7 +53,7 @@ export class Routes extends Component {
               />
             )}
           />
-          <Route exact path="/contact" component={ContactPage}></Route>
+          <Route exact path="/thanks" component={thanksPage} />
           <Route
             exact
             path="/product/:productid"

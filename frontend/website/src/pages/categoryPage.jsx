@@ -5,7 +5,6 @@ import NavMenu from "../components/common/navMenu";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CategoryContent from "../components/product/categoryContent";
-import LoadingSkeleton from "../components/other/skeleton";
 
 class CategoryPage extends Component {
   constructor({ match }) {

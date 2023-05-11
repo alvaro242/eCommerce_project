@@ -33,12 +33,38 @@ class MyAccountContent extends Component {
     let inversedOrders = this.state.orders.reverse();
 
     const renderOrders = inversedOrders.map((item, index) => {
+      let date = "-";
+      if (item.updated_at) {
+        date = item.updated_at.slice(0, 10);
+      }
+
+      let status = "";
+
+      if (item.status === "unpaid") {
+        status = (
+          <Link
+            to={{
+              pathname: "/payment",
+              state: {
+                orderRef: item.id,
+                amount: item.total,
+              },
+            }}
+            style={{ color: "black" }}
+          >
+            Unpaid
+          </Link>
+        );
+      } else if (item.status === "Paid") {
+        status = "Paid";
+      }
+
       return (
         <tr key={index}>
           <th scope="row">{item.id}</th>
-          <td>{item.updated_at}</td>
+          <td>{date}</td>
           <td>{item.total}</td>
-          <td>{item.status}</td>
+          <td>{status}</td>
           <td>{item.payment_method}</td>
 
           <td>
@@ -71,7 +97,7 @@ class MyAccountContent extends Component {
       return "Loading...";
     } else {
       return (
-        <Table className="table" striped bordered hover>
+        <Table responsive className="table" striped bordered hover>
           <thead>
             <tr>
               <th scope="col">Order number</th>

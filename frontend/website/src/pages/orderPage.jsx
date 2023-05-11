@@ -32,7 +32,7 @@ class OrderPage extends Component {
   }
 
   renderTable() {
-    if (this.state.isLoading == false) {
+    if (this.state.isLoading === false) {
       const renderProducts = this.state.products.map((item, index) => {
         return (
           <tr key={index}>
@@ -46,7 +46,7 @@ class OrderPage extends Component {
       });
 
       return (
-        <Table className="table" striped bordered hover>
+        <Table responsive className="table" striped bordered hover>
           <thead>
             <tr>
               <th scope="col">Product reference</th>

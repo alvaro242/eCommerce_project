@@ -4,7 +4,7 @@ import Footer from "../components/common/footer";
 import NavMenu from "../components/common/navMenu";
 import { Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import CategoryContent from "../components/product/categoryContent";
+import CategoryContent from "../components/Content/categoryContent";
 
 class CategoryPage extends Component {
   constructor({ match }) {
@@ -17,7 +17,6 @@ class CategoryPage extends Component {
     };
   }
   componentDidMount() {
-    window.scroll(0, 0);
     this.getData();
   }
 

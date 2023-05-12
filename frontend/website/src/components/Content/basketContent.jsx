@@ -1,11 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import Product1 from "./../../assets/images/products/colombia2.png";
 import { getBasket, getServerURL, deleteFromBasket } from "../api/api";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-class Basket extends Component {
+class BasketContent extends Component {
   constructor(props) {
     super(props);
 
@@ -26,7 +25,7 @@ class Basket extends Component {
 
     if (typeof user == "undefined") {
       //guest basket from local memory
-
+      this.setState({ subtotal: "" });
       const basketString = localStorage.getItem("basket");
 
       //if basket has items
@@ -141,19 +140,21 @@ class Basket extends Component {
                 </Col>
 
                 <Col md={2} lg={2} sm={2} xs={2}>
-                  <input
-                    defaultValue={item.qty}
-                    max={99}
-                    className="form-control"
-                    type="number"
-                  />
+                  <div className="input-group">
+                    <input
+                      defaultValue={item.qty}
+                      max={99}
+                      className="form-control"
+                      type="number"
+                    />
 
-                  <Button
-                    className="btn btn-block  mt-3  site-btn"
-                    onClick={() => this.handleRemoveFromCart(item.id, index)}
-                  >
-                    <i className="fa fa-trash "></i>
-                  </Button>
+                    <Button
+                      className="btn removebtn site-btn"
+                      onClick={() => this.handleRemoveFromCart(item.id, index)}
+                    >
+                      <i className="fa fa-trash "></i>
+                    </Button>
+                  </div>
                 </Col>
               </Row>
             </Card.Body>
@@ -188,4 +189,4 @@ class Basket extends Component {
   }
 }
 
-export default Basket;
+export default BasketContent;

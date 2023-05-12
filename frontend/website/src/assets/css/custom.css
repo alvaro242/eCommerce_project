@@ -1,9 +1,67 @@
-@import "carousell.css";
-@import "footer.css";
-@import "navMenu.css";
-@import "loginForm.css";
-@import "productPage.css";
-
 html {
   background-color: #e9b148;
+}
+
+.card {
+  background-color: #edd59b !important;
+  width: 100% !important;
+  border: none !important;
+  border-radius: 0% !important;
+  box-shadow: 0 0 2px 0 rgba(56, 72, 192, 0.1);
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.footerbackground {
+  background-color: #e9b148;
+}
+
+.footerBottom {
+  background-color: #1f1564 !important;
+  color: #fff;
+  text-align: center;
+}
+
+.footerContainer {
+  background-color: #e9b148 !important;
+}
+
+.container {
+  background-color: #f3dfb1;
+}
+
+.formContainer {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  width: 90%;
+}
+
+.loginButton {
+  padding: 2px;
+  width: 100%;
+  background-color: #bc8a4a !important;
+}
+
+.search {
+  background: #bc8a4a !important;
+}
+
+.navbar {
+  background-color: #b08f4c !important;
+  box-shadow: 0 0 3px 0 rgba(234, 163, 57, 0.1);
+}
+
+.Product-Name {
+  color: #000;
+  font-size: 25px;
+  font-weight: 200;
+}
+
+.removebtn {
+  background: #bc8a4a !important;
 }

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Container } from "react-bootstrap";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
-import MyAccountContent from "../components/other/myAccountContent";
+import MyAccountContent from "../components/Content/myAccountContent";
 
 class MyAccountPage extends Component {
   constructor(props) {
@@ -16,8 +16,6 @@ class MyAccountPage extends Component {
   }
 
   componentDidMount() {
-    window.scroll(0, 0);
-
     this.test();
   }
 

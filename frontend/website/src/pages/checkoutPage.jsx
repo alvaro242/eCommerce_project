@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Checkout from "../components/other/checkout";
+import Checkout from "../components/Content/checkout";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 

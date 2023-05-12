@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Basket from "../components/other/basket";
+import BasketContent from "../components/Content/basketContent";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 
@@ -14,7 +14,7 @@ class BasketPage extends Component {
     return (
       <Fragment>
         <NavMenu />
-        <Basket user={user} />
+        <BasketContent user={user} />
         <Footer />
       </Fragment>
     );

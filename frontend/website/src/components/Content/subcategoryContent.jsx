@@ -41,20 +41,20 @@ export class SubcategoryContent extends Component {
         );
       } else {
         return (
-          <Col className="p-2" key={index} xl={2} lg={4} sm={4} xs={6} md={4}>
+          <Col key={index} xl={2} lg={4} sm={4} xs={6} md={4}>
             <Link
               to={"/product/" + product.id}
               style={{ textDecoration: "none", color: "black" }}
             >
-              <Card className="card ">
+              <Card className="card p-2">
                 <img
                   alt="product"
                   className="center"
                   src={getServerURL() + product.image_nobackground}
                 />
                 <Card.Body>
-                  <p className="product-name-on-card">{product.name} </p>
-                  <p className="product-price-on-card">£{product.price}</p>
+                  <p>{product.name} </p>
+                  <p>£{product.price}</p>
                 </Card.Body>
               </Card>
             </Link>

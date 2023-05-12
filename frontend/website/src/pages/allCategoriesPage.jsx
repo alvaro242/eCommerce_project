@@ -3,7 +3,7 @@ import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 import { getAllCategories } from "../components/api/api";
 import { Container } from "react-bootstrap";
-import AllCategories from "../components/product/allCategories";
+import AllCategories from "../components/Content/allCategories";
 import LoadingSkeleton from "../components/other/skeleton";
 
 class AllCategoriesPage extends Component {
@@ -16,7 +16,6 @@ class AllCategoriesPage extends Component {
     };
   }
   componentDidMount() {
-    window.scroll(0, 0);
     this.getData();
   }
 

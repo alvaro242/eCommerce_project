@@ -3,7 +3,7 @@ import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 import { Container } from "react-bootstrap";
 import { getProductsBySubcategory } from "../components/api/api";
-import SubcategoryContent from "../components/product/subcategoryContent";
+import SubcategoryContent from "../components/Content/subcategoryContent";
 import { Link } from "react-router-dom";
 
 class SubcategoryPage extends Component {
@@ -17,7 +17,6 @@ class SubcategoryPage extends Component {
     };
   }
   componentDidMount() {
-    window.scroll(0, 0);
     this.getData();
   }
 

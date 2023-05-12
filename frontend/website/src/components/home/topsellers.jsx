@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { Col, Container, Row, Card } from "react-bootstrap";
-import "./../../assets/css/card.css";
 import { getProductsByFeatureTopSellers, getServerURL } from "../api/api";
 import { Link } from "react-router-dom";
 
@@ -79,9 +78,8 @@ class TopSellerProducts extends Component {
     return (
       <Fragment>
         <Container className="text-center center p-2" fluid={true}>
-          <div className="section-title text-center mb-55">
+          <div className=" text-center mb-55">
             <h2>Most Popular </h2>
-            <div>Top rated coffee</div>
           </div>
           <Row>{renderBestSellers}</Row>
         </Container>

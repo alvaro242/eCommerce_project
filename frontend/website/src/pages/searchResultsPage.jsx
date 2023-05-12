@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import Footer from "../components/common/footer";
 import NavMenu from "../components/common/navMenu";
 import { getProductsByInput } from "../components/api/api";
-import SearchResultsContent from "../components/product/searchResultsContent";
+import SearchResultsContent from "../components/Content/searchResultsContent";
 
 class searchResultsPage extends Component {
   constructor({ match }) {
@@ -16,7 +16,6 @@ class searchResultsPage extends Component {
   }
 
   componentDidMount() {
-    window.scroll(0, 0);
     this.getData();
   }
 

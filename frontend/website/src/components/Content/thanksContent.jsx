@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { getWebInfo } from "../api/api";
-import LoadingSkeleton from "./skeleton";
 
-export class Thanks extends Component {
+export class ThanksContent extends Component {
   constructor(props) {
     super(props);
 
@@ -44,6 +42,7 @@ export class Thanks extends Component {
               <ul>
                 <li>React Native </li>
                 <li>Axios </li>
+                <li>Stripe</li>
                 <li>Laravel and Laravel Passport </li>
                 <li>Swagger </li>
                 <li>
@@ -63,4 +62,4 @@ export class Thanks extends Component {
   }
 }
 
-export default Thanks;
+export default ThanksContent;

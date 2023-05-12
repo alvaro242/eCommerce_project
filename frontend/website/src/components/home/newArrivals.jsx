@@ -1,14 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import p1 from "../../assets/images/products/noBackground/colombia.png";
-import p2 from "../../assets/images/products/noBackground/Brazil.png";
-import p3 from "../../assets/images/products/noBackground/Guatemala.png";
-import p4 from "../../assets/images/products/noBackground/Honduras.png";
-import p5 from "../../assets/images/products/noBackground/India.png";
-import p6 from "../../assets/images/products/noBackground/Indonesia.png";
-import p7 from "../../assets/images/products/noBackground/Peru.png";
-import p8 from "../../assets/images/products/noBackground/Vietnam.png";
 import { getProductsByFeatureNew, getServerURL } from "../api/api";
 
 export class NewArrivals extends Component {
@@ -43,7 +35,7 @@ export class NewArrivals extends Component {
                 to={"/product/" + product.id}
                 style={{ textDecoration: "none", color: "black" }}
               >
-                <Card className="image-box card w-100">
+                <Card className="card">
                   <img
                     className="center "
                     src={getServerURL() + product.image_nobackground}
@@ -67,7 +59,7 @@ export class NewArrivals extends Component {
                 to={"/product/" + product.id}
                 style={{ textDecoration: "none", color: "black" }}
               >
-                <Card className="image-box card w-100">
+                <Card className=" card ">
                   <img
                     className="center "
                     src={getServerURL() + product.image_nobackground}
@@ -87,9 +79,8 @@ export class NewArrivals extends Component {
     return (
       <Fragment>
         <Container className="text-center" fluid={true}>
-          <div className="section-title text-center mb-55">
+          <div className=" text-center ">
             <h2>New arrivals</h2>
-            <p>Have a look!</p>
           </div>
           <Row>{renderNewArrivals}</Row>
         </Container>

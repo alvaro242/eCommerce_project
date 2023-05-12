@@ -49,8 +49,12 @@ export class NavMenu extends Component {
     if (localStorage.getItem("token")) {
       menuOptions = (
         <div>
+          <Link to="/basket" style={{ textDecoration: "none", color: "black" }}>
+            <i className="fa fa-shopping-basket red px-2"></i>
+          </Link>
+
           <Link to="/account" className="h4 btn">
-            <i className="fa fa-user-circle-o"> </i>
+            <i className="fa fa-user-circle-o px-2"> </i>
           </Link>
           <Link
             to="/"
@@ -59,20 +63,16 @@ export class NavMenu extends Component {
           >
             LOGOUT
           </Link>
-          <Link to="/basket" style={{ textDecoration: "none", color: "black" }}>
-            <i className="fa fa-shopping-cart"></i>
-          </Link>
         </div>
       );
     } else {
       menuOptions = (
         <div>
+          <Link to="/basket" style={{ textDecoration: "none", color: "black" }}>
+            <i className="fa fa-shopping-basket px-2"></i>
+          </Link>
           <Link to="/login" className="h4 btn">
             Log in | Sign Up
-          </Link>
-
-          <Link to="/basket" style={{ textDecoration: "none", color: "black" }}>
-            <i className="fa fa-shopping-cart"></i>
           </Link>
         </div>
       );
@@ -80,12 +80,11 @@ export class NavMenu extends Component {
     return (
       <Fragment>
         <Navbar expand="lg">
-          <Container fluid={"true"} className="fixed-top   ">
+          <Container fluid={"true"} className="fixed-top">
             <Row className="bg-white ">
               <Col className="" lg={5} md={5} sm={3} xs={3}>
                 <Link to="/" className="p-3">
                   <img src={gimmeBeansLogo} style={{ maxWidth: 120 }} />
-                  {/* sample icon: "https://www.iconexperience.com/_img/o_collection_png/office/64x64/plain/coffee_bean.png"*/}
                 </Link>
               </Col>
 
@@ -110,7 +109,7 @@ export class NavMenu extends Component {
                     type="button"
                     title="search"
                     id="search"
-                    className="btn search-btn"
+                    className="btn search"
                     onClick={this.handleSearch}
                   >
                     <i className="fa fa-search"> </i>

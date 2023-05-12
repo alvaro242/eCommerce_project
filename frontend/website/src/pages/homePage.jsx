@@ -5,7 +5,7 @@ import NewArrivals from "../components/home/newArrivals";
 
 import { Container } from "react-bootstrap";
 import PWAPrompt from "react-ios-pwa-prompt";
-import "../assets/css/home.css";
+
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 
@@ -23,7 +23,6 @@ export class homePage extends Component {
   }
 
   componentDidMount() {
-    window.scroll(0, 0);
     this.getData();
   }
 

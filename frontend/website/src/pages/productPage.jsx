@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import Product from "../components/product/product";
+import Product from "../components/Content/product";
 import NavMenu from "../components/common/navMenu";
 import Footer from "../components/common/footer";
 import { getProductByID } from "../components/api/api";
@@ -21,7 +21,6 @@ class ProductPage extends Component {
   }
 
   componentDidMount() {
-    window.scroll({ top: 100, left: 100, behavior: "smooth" });
     this.getData();
   }
   async getData() {

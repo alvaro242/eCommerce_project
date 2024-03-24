@@ -38,7 +38,7 @@ Route::get("/user", [UserController::class, "User"])->middleware("auth:api");
 
 // END Auth
 
-
+//two first are disabled in frontend
 Route::post('/visitor', [VisitorController::class, 'writeVisitorDetails']);
 
 Route::get('/webinfo', [WebInfoController::class, 'getAllInfo']);

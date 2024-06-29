@@ -41,7 +41,7 @@ export class Footer extends Component {
             </Row>
           </Container>
           <div className="footerBottom">
-            2023 Alvaro Dominguez Mora. Final project for the course Software
+            2024 Alvaro Dominguez Mora. Final project for the course Software
             Engineering in Manchester Metropolitan University
           </div>
         </div>

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function getServerURL() {
-  let serverURL = "https://server.alvarodominguezmora.com/";
+  let serverURL = "https://gimmeback.duckdns.org/";
 
   return serverURL;
 }

@@ -1,11 +1,10 @@
 import axios from "axios";
 
 export function getServerURL() {
-  let serverURL = "https://gimmeback.duckdns.org/";
+  let serverURL = "https://laravel.alvarodmora.com/";
 
   return serverURL;
 }
-
 axios.defaults.headers.common["Authorization"] =
   "Bearer " + localStorage.getItem("token");
 

@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Subcategory;
-
 /**
  * @OA\Tag(
  *     name="Categories",
- *     description="API Endpoints for Category operations"
+ *     
  * )
  */
 
@@ -18,7 +17,7 @@ use App\Models\Subcategory;
 class CategoryController extends Controller
 {
 
-    /**
+     /**
  * @OA\Get(
  *     path="/api/categories",
  *     tags={"Categories"},
@@ -48,7 +47,8 @@ class CategoryController extends Controller
  *     )
  * )
  */
-    
+
+
     public function getAllCategories(){
 
         $categories = Category::get();

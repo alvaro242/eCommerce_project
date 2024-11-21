@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+
 
 /**
  * @OA\Tag(
@@ -35,8 +36,7 @@ use App\Models\Product;
 class ProductController extends Controller
 {
 
-
-/**
+    /**
      * @OA\Get(
      *     path="/api/products/category={category}",
      *     tags={"Products"},
@@ -59,7 +59,6 @@ class ProductController extends Controller
      *     )
      * )
      */
-
     public function getProductsByCategory(Request $request){
 
         $category = $request->category;
@@ -67,10 +66,7 @@ class ProductController extends Controller
         return $productsByCategory;
     }
 
-     
-
- 
- /**
+     /**
      * @OA\Get(
      *     path="/api/products",
      *     tags={"Products"},
@@ -85,6 +81,7 @@ class ProductController extends Controller
      *     )
      * )
      */
+
     public function getAllProducts(Request $request){
 
        
@@ -92,8 +89,7 @@ class ProductController extends Controller
         return $allProducts;
     }
 
-    
-/**
+    /**
      * @OA\Get(
      *     path="/api/products/subcategory={subcategory}",
      *     tags={"Products"},
@@ -124,8 +120,7 @@ class ProductController extends Controller
         return $productsBySubcategory;
     }
 
-    
-/**
+    /**
      * @OA\Get(
      *     path="/api/products/feature={feature}",
      *     tags={"Products"},
@@ -156,8 +151,7 @@ class ProductController extends Controller
         return $productsByExtraFeature;
     }
 
-     
-/**
+    /**
      * @OA\Get(
      *     path="/api/products/id={id}",
      *     tags={"Products"},
@@ -185,8 +179,7 @@ class ProductController extends Controller
         return $productDetails;
     }
 
-    
-/**
+    /**
  * @OA\Get(
  *     path="/api/products/search={input}",
  *     tags={"Products"},
@@ -216,7 +209,7 @@ class ProductController extends Controller
  *     )
  * )
  */
- 
+
     public function searchProducts(Request $request){
         $input = $request-> input;
         $results = Product::where("name", "LIKE", "%{$input}%")->get();

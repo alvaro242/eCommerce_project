@@ -9,10 +9,14 @@ use DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\SignupRequest;
 
-class AuthController extends Controller
-{
+/**
+ * @OA\Tag(
+ *     name="Authentication",
+ *     description="API Endpoints for Authentication operations"
+ * )
+ */
 
-    /**
+   /**
  * @OA\Post(
  *     path="/api/login",
  *     summary="User login",
@@ -34,10 +38,14 @@ class AuthController extends Controller
  *     )
  * )
  */
-    public function Login(Request $request){
 
-        try{
-            if (Auth::attempt($request->only("email", "password"))){
+class AuthController extends Controller
+{
+    public function Login(Request $request)
+    {
+
+        try {
+            if (Auth::attempt($request->only("email", "password"))) {
                 $user = Auth::user();
                 $token = $user->createToken("app")->accessToken;
 
@@ -47,8 +55,8 @@ class AuthController extends Controller
                     "user" => $user
                 ], 200);
             }
-        }catch(Exception $exception){
-            return response ([ "message" => $exception-> getMessage()], 400);
+        } catch (Exception $exception) {
+            return response(["message" => $exception->getMessage()], 400);
         }
 
         return response([
@@ -57,7 +65,7 @@ class AuthController extends Controller
 
     }
 
-    /**
+       /**
  * @OA\Post(
  *     path="/api/signup",
  *     summary="User registration",
@@ -77,13 +85,14 @@ class AuthController extends Controller
  * )
  */
 
-    public function Signup(SignupRequest $request){
-        try{
+    public function Signup(SignupRequest $request)
+    {
+        try {
 
             $user = User::create([
                 "name" => $request->name,
-                "email"=>$request ->email,
-                "password"=> Hash::make($request ->password)
+                "email" => $request->email,
+                "password" => Hash::make($request->password)
             ]);
 
             $token = $user->createToken("app")->accessToken;
@@ -94,7 +103,7 @@ class AuthController extends Controller
                 "user" => $user
             ], 200);
 
-        }catch(Exception $exception ){
+        } catch (Exception $exception) {
             return response([
                 "message" => $exception->getMessage()
             ], 400);

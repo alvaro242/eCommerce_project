@@ -1,0 +1,11 @@
+# Use the official Nginx base image
+FROM nginx:alpine
+
+# Remove the default Nginx configuration
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copy your custom Nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/
+
+# Copy the Laravel app files into the Nginx HTML directory
+COPY . /usr/share/nginx/html

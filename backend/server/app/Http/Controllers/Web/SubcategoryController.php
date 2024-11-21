@@ -1,25 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Subcategory;
 use App\Models\Category;
 
-/**
- * @OA\Tag(
- *     name="Subcategories",
- *     description="API Endpoints for Subcategory operations"
- * )
- */
-
- 
-
-class SubcategoryController extends Controller
-{
-
-    /**
+ /**
      * @OA\Get(
      *     path="/api/subcategories",
      *     tags={"Subcategories"},
@@ -42,17 +30,19 @@ class SubcategoryController extends Controller
      *     )
      * )
      */
-    
-    public function getAllSubcategories(){
 
-     
 
-     $subcategories = Subcategory::get();
+
+class SubcategoryController extends Controller
+{
+
+    public function getAllSubcategories()
+    {
+        $subcategories = Subcategory::get();
         return $subcategories;
-        }
+    }
 
-
-    /**
+     /**
      * @OA\Get(
      *     path="/api/subcategories/category={name}",
      *     tags={"Subcategories"},
@@ -82,11 +72,12 @@ class SubcategoryController extends Controller
      * )
      */
 
-    public function getSubCategoriesByCategoryname(Request $request){
+    public function getSubCategoriesByCategoryname(Request $request)
+    {
 
         $category = $request->category;
 
-        $subcategoriesByCategory = Subcategory::where("parent_category", $category) -> get();
+        $subcategoriesByCategory = Subcategory::where("parent_category", $category)->get();
 
         return $subcategoriesByCategory;
 

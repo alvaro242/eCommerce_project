@@ -274,6 +274,7 @@ return [
          */
         'ui' => [
             'display' => [
+                'defaultModelsExpandDepth' => -1,
                 'dark_mode' => env('L5_SWAGGER_UI_DARK_MODE', false),
                 /*
                  * Controls the default expansion setting for the operations and tags. It can be :
@@ -312,7 +313,7 @@ return [
          * Constants which can be used in annotations
          */
         'constants' => [
-            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'http://my-default-host.com'),
+            'L5_SWAGGER_CONST_HOST' => env('L5_SWAGGER_CONST_HOST', 'https://laravel.alvarodmora.com'),
         ],
     ],
 ];

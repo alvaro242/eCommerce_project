@@ -73,21 +73,188 @@
                 }
             }
         },
+        "/api/products/category={category}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Retrieve products by category",
+                "operationId": "042ae15cb9ddd43e9232916ab6179732",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "description": "The category of the products to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "accesories"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of products by category",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Retrieve all products",
+                "operationId": "d938f8cb3099af4fbdb80a0f61284841",
+                "responses": {
+                    "200": {
+                        "description": "List of all products",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products/subcategory={subcategory}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Retrieve products by subcategory",
+                "operationId": "14431c70ac42e80b09d86898f69dfb5d",
+                "parameters": [
+                    {
+                        "name": "subcategory",
+                        "in": "path",
+                        "description": "The subcategory of the products to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "colombia"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of products by subcategory",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products/feature={feature}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Retrieve products by extra feature",
+                "operationId": "b14e1bd842aecdbf2cf60f4186543748",
+                "parameters": [
+                    {
+                        "name": "feature",
+                        "in": "path",
+                        "description": "The extra feature of the products to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "topseller"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of products by extra feature",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Product"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/products/id={id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Retrieve product by ID",
+                "operationId": "c0a3b7a0a2b2395256ca3cfe2e501b38",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "The ID of the product to retrieve",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": "7"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Product details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/products/search={input}": {
             "get": {
                 "tags": [
                     "Products"
                 ],
                 "summary": "Search products by name",
-                "operationId": "f45dba12136fa38fc5e29d29118e664a",
+                "operationId": "9bceb4e160c9342aa02bd92d5f6ee8c4",
                 "parameters": [
                     {
                         "name": "input",
                         "in": "path",
+                        "description": "The name or partial name of the product to search for",
                         "required": true,
                         "schema": {
                             "type": "string"
-                        }
+                        },
+                        "example": "natural"
                     }
                 ],
                 "responses": {
@@ -98,42 +265,24 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "properties": {
-                                            "id": {
-                                                "type": "integer"
-                                            },
-                                            "name": {
-                                                "type": "string"
-                                            },
-                                            "category": {
-                                                "type": "string"
-                                            },
-                                            "subcategory": {
-                                                "type": "string"
-                                            },
-                                            "description": {
-                                                "type": "string"
-                                            },
-                                            "price": {
-                                                "type": "number"
-                                            },
-                                            "image": {
-                                                "type": "string"
-                                            },
-                                            "extra_feature": {
-                                                "type": "string"
-                                            },
-                                            "created_at": {
-                                                "type": "string",
-                                                "format": "datetime"
-                                            },
-                                            "updated_at": {
-                                                "type": "string",
-                                                "format": "datetime"
-                                            }
-                                        },
-                                        "type": "object"
+                                        "$ref": "#/components/schemas/Product"
                                     }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No products found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "No products found"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
@@ -330,18 +479,72 @@
             }
         }
     },
+    "components": {
+        "schemas": {
+            "Product": {
+                "title": "Product",
+                "description": "Product model",
+                "properties": {
+                    "id": {
+                        "description": "Product ID",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Product name",
+                        "type": "string"
+                    },
+                    "category": {
+                        "description": "Product category",
+                        "type": "string"
+                    },
+                    "subcategory": {
+                        "description": "Product subcategory",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Product description",
+                        "type": "string"
+                    },
+                    "price": {
+                        "description": "Product price",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "image": {
+                        "description": "Product image URL",
+                        "type": "string"
+                    },
+                    "extra_feature": {
+                        "description": "Product extra feature",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Creation timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Update timestamp",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
     "tags": [
         {
             "name": "Categories",
             "description": "API Endpoints for Category operations"
         },
         {
-            "name": "Products",
-            "description": "API Endpoints for Product operations"
-        },
-        {
             "name": "Subcategories",
             "description": "API Endpoints for Subcategory operations"
+        },
+        {
+            "name": "Products",
+            "description": "Products"
         },
         {
             "name": "Authentication",

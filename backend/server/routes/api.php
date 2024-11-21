@@ -60,3 +60,7 @@ Route::get('/products/feature={feature}', [ProductController::class, 'getProduct
 Route::get('/products/id={productid}', [ProductController::class, 'getProductByID']);
 
 Route::get('/products/search={input}', [ProductController::class, 'searchProducts']);
+
+
+
+

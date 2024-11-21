@@ -11,6 +11,29 @@ use App\Http\Requests\SignupRequest;
 
 class AuthController extends Controller
 {
+
+    /**
+ * @OA\Post(
+ *     path="/api/login",
+ *     summary="User login",
+ *     tags={"Authentication"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             @OA\Property(property="email", type="string", format="email"),
+ *             @OA\Property(property="password", type="string", format="password"),
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Login successful",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="token", type="string"),
+ *             @OA\Property(property="user", type="object")
+ *         )
+ *     )
+ * )
+ */
     public function Login(Request $request){
 
         try{
@@ -33,6 +56,26 @@ class AuthController extends Controller
         ], 401);
 
     }
+
+    /**
+ * @OA\Post(
+ *     path="/api/signup",
+ *     summary="User registration",
+ *     tags={"Authentication"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             @OA\Property(property="name", type="string"),
+ *             @OA\Property(property="email", type="string", format="email"),
+ *             @OA\Property(property="password", type="string", format="password")
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=201,
+ *         description="User created successfully"
+ *     )
+ * )
+ */
 
     public function Signup(SignupRequest $request){
         try{

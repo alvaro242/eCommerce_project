@@ -8,16 +8,47 @@ use App\Models\Category;
 use App\Models\Subcategory;
 
 /**
- * @OA\Get(
- *     path="/categories",
- * tags={"categories"},
- *     @OA\Response(response="200", description="Obtain categories")
+ * @OA\Tag(
+ *     name="Categories",
+ *     description="API Endpoints for Category operations"
  * )
  */
 
 
 class CategoryController extends Controller
 {
+
+    /**
+ * @OA\Get(
+ *     path="/api/categories",
+ *     tags={"Categories"},
+ *     summary="Get all categories with their subcategories",
+ *     @OA\Response(
+ *         response=200,
+ *         description="List of categories with subcategories",
+ *         @OA\JsonContent(
+ *             type="array",
+ *             @OA\Items(
+ *                 @OA\Property(property="name", type="string", example="Coffee"),
+ *                 @OA\Property(property="image", type="string", example="storage/categories/coffee.png"),
+ *                 @OA\Property(
+ *                     property="subcategory",
+ *                     type="array",
+ *                     @OA\Items(
+ *                         @OA\Property(property="id", type="integer", example=1),
+ *                         @OA\Property(property="name", type="string", example="Brazil"),
+ *                         @OA\Property(property="parent_category", type="string", example="Coffee"),
+ *                         @OA\Property(property="images", type="string", example="storage/subcategories/brazil.png"),
+ *                         @OA\Property(property="created_at", type="string", format="datetime", nullable=true),
+ *                         @OA\Property(property="updated_at", type="string", format="datetime", nullable=true)
+ *                     )
+ *                 )
+ *             )
+ *         )
+ *     )
+ * )
+ */
+    
     public function getAllCategories(){
 
         $categories = Category::get();

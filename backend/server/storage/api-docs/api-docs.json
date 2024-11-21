@@ -5,155 +5,326 @@
         "version": "1."
     },
     "paths": {
-        "/categories": {
+        "/api/categories": {
             "get": {
                 "tags": [
-                    "categories"
+                    "Categories"
                 ],
-                "operationId": "9a16d30dce07c69649d56c367cf42a46",
+                "summary": "Get all categories with their subcategories",
+                "operationId": "05b87e0f07999f1b2180d2dbeb4012d3",
                 "responses": {
                     "200": {
-                        "description": "Obtain categories"
+                        "description": "List of categories with subcategories",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Coffee"
+                                            },
+                                            "image": {
+                                                "type": "string",
+                                                "example": "storage/categories/coffee.png"
+                                            },
+                                            "subcategory": {
+                                                "type": "array",
+                                                "items": {
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "integer",
+                                                            "example": 1
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "example": "Brazil"
+                                                        },
+                                                        "parent_category": {
+                                                            "type": "string",
+                                                            "example": "Coffee"
+                                                        },
+                                                        "images": {
+                                                            "type": "string",
+                                                            "example": "storage/subcategories/brazil.png"
+                                                        },
+                                                        "created_at": {
+                                                            "type": "string",
+                                                            "format": "datetime",
+                                                            "nullable": true
+                                                        },
+                                                        "updated_at": {
+                                                            "type": "string",
+                                                            "format": "datetime",
+                                                            "nullable": true
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/products": {
+        "/api/products/search={input}": {
             "get": {
                 "tags": [
-                    "products"
+                    "Products"
                 ],
-                "operationId": "d44b43939b7ff81aac8f0852d732817d",
+                "summary": "Search products by name",
+                "operationId": "f45dba12136fa38fc5e29d29118e664a",
+                "parameters": [
+                    {
+                        "name": "input",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Obtain products"
+                        "description": "Search results",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "category": {
+                                                "type": "string"
+                                            },
+                                            "subcategory": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "price": {
+                                                "type": "number"
+                                            },
+                                            "image": {
+                                                "type": "string"
+                                            },
+                                            "extra_feature": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "datetime"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "datetime"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/products/category={category}": {
+        "/api/subcategories": {
             "get": {
                 "tags": [
-                    "products"
+                    "Subcategories"
                 ],
-                "operationId": "1ea5344bc8f274ab70e42f54b5babe0e",
+                "summary": "Get all subcategories",
+                "description": "Returns a list of all subcategories",
+                "operationId": "c11d41fcc1c55fc68da0d3f333f0b548",
                 "responses": {
                     "200": {
-                        "description": "Obtain products by category"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "parent_category": {
+                                                "type": "string"
+                                            },
+                                            "images": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "datetime"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "datetime"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/products/subcategory={subcategory}": {
+        "/api/subcategories/category={name}": {
             "get": {
                 "tags": [
-                    "products"
+                    "Subcategories"
                 ],
-                "operationId": "def09bb6eccc9f70410963ba85484ac7",
+                "summary": "Get subcategories by category name",
+                "description": "Returns subcategories filtered by parent category name. Examples of category names: accesories, coffee",
+                "operationId": "f3231ec39e5a6f1046c1751f192e7a35",
+                "parameters": [
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "Parent category name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "Obtain products by subcategory"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "parent_category": {
+                                                "type": "string"
+                                            },
+                                            "subcategory_name": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "datetime"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "datetime"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/products/feature={feature}": {
-            "get": {
-                "tags": [
-                    "products"
-                ],
-                "operationId": "27fe2164031049bc6606db1c5ff79a5c",
-                "responses": {
-                    "200": {
-                        "description": "Obtain products by extra feature"
-                    }
-                }
-            }
-        },
-        "/products/id={productid}": {
-            "get": {
-                "tags": [
-                    "products"
-                ],
-                "operationId": "e50d710612b41da878c82c572747afe5",
-                "responses": {
-                    "200": {
-                        "description": "Obtain products by product ID"
-                    }
-                }
-            }
-        },
-        "/products/search={input}": {
-            "get": {
-                "tags": [
-                    "products"
-                ],
-                "operationId": "28d762df49ccebf73eafc41849312a26",
-                "responses": {
-                    "200": {
-                        "description": "Obtain products by search input"
-                    }
-                }
-            }
-        },
-        "/subcategories": {
-            "get": {
-                "tags": [
-                    "subcategories"
-                ],
-                "operationId": "52a86430688d32b43f42172be8294264",
-                "responses": {
-                    "200": {
-                        "description": "Obtain subcategories"
-                    }
-                }
-            }
-        },
-        "/subcategories/{categoryname}": {
-            "get": {
-                "tags": [
-                    "subcategories"
-                ],
-                "operationId": "a9c4a31f08a5735dfd85dc98c4492a37",
-                "responses": {
-                    "200": {
-                        "description": "Obtain subcategories"
-                    }
-                }
-            }
-        },
-        "/visitor": {
+        "/api/login": {
             "post": {
                 "tags": [
-                    "visitor"
+                    "Authentication"
                 ],
-                "operationId": "eba15c2380342de0ecd1ea2a35a130c3",
+                "summary": "User login",
+                "operationId": "cf6cdd4140fe406a11dc479250e3b8e7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
-                        "description": "Send visitor details"
+                        "description": "Login successful",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        },
+                                        "user": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
         },
-        "/webinfo": {
-            "get": {
+        "/api/signup": {
+            "post": {
                 "tags": [
-                    "webinfo"
+                    "Authentication"
                 ],
-                "operationId": "6d5ccb84985d20e38ad5939eb4f44f92",
-                "responses": {
-                    "200": {
-                        "description": "Obtain web info"
+                "summary": "User registration",
+                "operationId": "e21e6a924e7c86ec87f929adf46803e7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
                     }
-                }
-            }
-        },
-        "/projects": {
-            "get": {
-                "operationId": "5e1b279235b6f0b7987276de217c15c3",
+                },
                 "responses": {
-                    "200": {
-                        "description": "Display a listing of projects."
+                    "201": {
+                        "description": "User created successfully"
                     }
                 }
             }
@@ -161,24 +332,20 @@
     },
     "tags": [
         {
-            "name": "categories",
-            "description": "categories"
+            "name": "Categories",
+            "description": "API Endpoints for Category operations"
         },
         {
-            "name": "products",
-            "description": "products"
+            "name": "Products",
+            "description": "API Endpoints for Product operations"
         },
         {
-            "name": "subcategories",
-            "description": "subcategories"
+            "name": "Subcategories",
+            "description": "API Endpoints for Subcategory operations"
         },
         {
-            "name": "visitor",
-            "description": "visitor"
-        },
-        {
-            "name": "webinfo",
-            "description": "webinfo"
+            "name": "Authentication",
+            "description": "Authentication"
         }
     ]
 }

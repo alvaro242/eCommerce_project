@@ -6,13 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\visitor;
 
-/**
- * @OA\Post(
- *     path="/visitor",
- * tags={"visitor"},
- *     @OA\Response(response="200", description="Send visitor details")
- * )
- */
+
 
 class VisitorController extends Controller
 {

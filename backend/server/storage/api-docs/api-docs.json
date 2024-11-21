@@ -1,0 +1,184 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API documentation",
+        "version": "1."
+    },
+    "paths": {
+        "/categories": {
+            "get": {
+                "tags": [
+                    "categories"
+                ],
+                "operationId": "9a16d30dce07c69649d56c367cf42a46",
+                "responses": {
+                    "200": {
+                        "description": "Obtain categories"
+                    }
+                }
+            }
+        },
+        "/products": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "operationId": "d44b43939b7ff81aac8f0852d732817d",
+                "responses": {
+                    "200": {
+                        "description": "Obtain products"
+                    }
+                }
+            }
+        },
+        "/products/category={category}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "operationId": "1ea5344bc8f274ab70e42f54b5babe0e",
+                "responses": {
+                    "200": {
+                        "description": "Obtain products by category"
+                    }
+                }
+            }
+        },
+        "/products/subcategory={subcategory}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "operationId": "def09bb6eccc9f70410963ba85484ac7",
+                "responses": {
+                    "200": {
+                        "description": "Obtain products by subcategory"
+                    }
+                }
+            }
+        },
+        "/products/feature={feature}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "operationId": "27fe2164031049bc6606db1c5ff79a5c",
+                "responses": {
+                    "200": {
+                        "description": "Obtain products by extra feature"
+                    }
+                }
+            }
+        },
+        "/products/id={productid}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "operationId": "e50d710612b41da878c82c572747afe5",
+                "responses": {
+                    "200": {
+                        "description": "Obtain products by product ID"
+                    }
+                }
+            }
+        },
+        "/products/search={input}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "operationId": "28d762df49ccebf73eafc41849312a26",
+                "responses": {
+                    "200": {
+                        "description": "Obtain products by search input"
+                    }
+                }
+            }
+        },
+        "/subcategories": {
+            "get": {
+                "tags": [
+                    "subcategories"
+                ],
+                "operationId": "52a86430688d32b43f42172be8294264",
+                "responses": {
+                    "200": {
+                        "description": "Obtain subcategories"
+                    }
+                }
+            }
+        },
+        "/subcategories/{categoryname}": {
+            "get": {
+                "tags": [
+                    "subcategories"
+                ],
+                "operationId": "a9c4a31f08a5735dfd85dc98c4492a37",
+                "responses": {
+                    "200": {
+                        "description": "Obtain subcategories"
+                    }
+                }
+            }
+        },
+        "/visitor": {
+            "post": {
+                "tags": [
+                    "visitor"
+                ],
+                "operationId": "eba15c2380342de0ecd1ea2a35a130c3",
+                "responses": {
+                    "200": {
+                        "description": "Send visitor details"
+                    }
+                }
+            }
+        },
+        "/webinfo": {
+            "get": {
+                "tags": [
+                    "webinfo"
+                ],
+                "operationId": "6d5ccb84985d20e38ad5939eb4f44f92",
+                "responses": {
+                    "200": {
+                        "description": "Obtain web info"
+                    }
+                }
+            }
+        },
+        "/projects": {
+            "get": {
+                "operationId": "5e1b279235b6f0b7987276de217c15c3",
+                "responses": {
+                    "200": {
+                        "description": "Display a listing of projects."
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "categories",
+            "description": "categories"
+        },
+        {
+            "name": "products",
+            "description": "products"
+        },
+        {
+            "name": "subcategories",
+            "description": "subcategories"
+        },
+        {
+            "name": "visitor",
+            "description": "visitor"
+        },
+        {
+            "name": "webinfo",
+            "description": "webinfo"
+        }
+    ]
+}
